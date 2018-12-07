@@ -57,9 +57,9 @@ def main():
         print('    Channels: {0:d} - {1:d}'.format(low_chan, high_chan))
         print('    Options:', enum_mask_to_string(OptionFlags, options))
         try:
-            input("\nPress 'Enter' to continue")
-        except (NameError, SyntaxError):
-            pass
+            #input("\nPress 'Enter' to continue")
+        #except (NameError, SyntaxError):
+            #pass
 
         print('\nAcquiring data ... Press Ctrl-C to abort')
 

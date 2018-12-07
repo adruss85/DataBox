@@ -65,10 +65,10 @@ def main():
         print('    Options: ', enum_mask_to_string(OptionFlags, options))
         print('    Trigger Mode: ', trigger_mode.name)
 
-        try:
-            input('\nPress ENTER to continue ...')
-        except (NameError, SyntaxError):
-            pass
+        #try:
+            #input('\nPress ENTER to continue ...')
+        #except (NameError, SyntaxError):
+            #pass
 
         hat.trigger_mode(trigger_mode)
 

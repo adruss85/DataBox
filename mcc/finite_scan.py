@@ -61,10 +61,10 @@ def main():
         print('    Samples per channel', samples_per_channel)
         print('    Options: ', enum_mask_to_string(OptionFlags, options))
 
-        try:
-            input('\nPress ENTER to continue ...')
-        except (NameError, SyntaxError):
-            pass
+        #try:
+            #input('\nPress ENTER to continue ...')
+        #except (NameError, SyntaxError):
+            #pass
 
         # Configure and start the scan.
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,

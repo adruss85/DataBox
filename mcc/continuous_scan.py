@@ -66,10 +66,10 @@ def main():
         print('    Actual scan rate: ', actual_scan_rate)
         print('    Options: ', enum_mask_to_string(OptionFlags, options))
 
-        try:
-            input('\nPress ENTER to continue ...')
-        except (NameError, SyntaxError):
-            pass
+        #try:
+            #input('\nPress ENTER to continue ...')
+        #except (NameError, SyntaxError):
+            #pass
 
 
         # Configure and start the scan.
