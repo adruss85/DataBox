@@ -70,7 +70,7 @@ while True:
     internal = sensor.readInternalC()
     print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
     print('    Internal Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(internal, c_to_f(internal)))
-    now = time.strftime('%d-%m-%Y %H:%M:%S.%f')
+    now = time.strftime('%d-%m-%Y %H:%M:%S')
     f = open("data.txt", "a")
     f.write(now + ',{0:0.3F}\n'.format(temp, c_to_f(temp)))
     f.close

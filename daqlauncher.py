@@ -4,6 +4,7 @@ from Tkinter import *
 import os
 import sys
 
+
 root = Tk()
 root.title("DAQ Launcher")
 frame = Frame(root)
