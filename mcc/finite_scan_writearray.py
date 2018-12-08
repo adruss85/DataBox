@@ -34,13 +34,14 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0, 1, 2]
+    channels = [0]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
     samples_per_channel = 10000
     scan_rate = 1000
     options = OptionFlags.DEFAULT
+    timeout = 5.0
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -72,6 +73,12 @@ def main():
                             options)
 
         print('Starting scan ... Press Ctrl-C to stop\n')
+
+        """Try reading when scanning?"""
+        #read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+        #ra = read_output.data
+        #np.savetxt("foo.csv", ra, delimiter=",")
+        
 
         # Display the header row for the data table.
         print('Samples Read    Scan Count', end='')
@@ -107,12 +114,9 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
 
     """
     total_samples_read = 0
-    read_request_size = 1
+    read_request_size = 500
     timeout = 5.0
-    #read_result_data1 = np.zeros()
     
-    f = open("data.txt", "w")
-    f.close()
 
     # Continuously update the display value until Ctrl-C is
     # pressed or the number of samples requested has been read.
@@ -133,8 +137,8 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
         # Display the last sample for each channel.
         print('\r{:12}'.format(samples_read_per_channel),
               ' {:12} '.format(total_samples_read), end='')
-        data = str(read_result.data[0])
-        a = np.asarray(data)
+        #data = str(read_result.data[0])
+        #a = np.asarray(data)
         
 
         if samples_read_per_channel > 0:
@@ -148,10 +152,9 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
             sleep(0.1)
 
     print('\n')
-    return read_result
-    f = open("data.txt", "a")
-    f.write(a)
-    f.close()
+    #print(read_result.data)
+    #r0 = np.asarray(read_result.data)
+    #np.savetxt("foo.csv", r0, delimiter=",")
 
 
 if __name__ == '__main__':
