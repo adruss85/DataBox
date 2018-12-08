@@ -34,14 +34,14 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0]
+    channels = [0, 1]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
-    samples_per_channel = 10000
-    scan_rate = 1000
+    samples_per_channel = 4000
+    scan_rate = 4000
     options = OptionFlags.DEFAULT
-    timeout = 5.0
+    timeout = 10.0
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -75,9 +75,12 @@ def main():
         print('Starting scan ... Press Ctrl-C to stop\n')
 
         """Try reading when scanning?"""
-        #read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
-        #ra = read_output.data
-        #np.savetxt("foo.csv", ra, delimiter=",")
+        read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+        chan_data = np.zeros([samples_per_channel, num_channels])
+        for i in range (num_channels):
+            chan_data[:,i] = read_output.data[i]
+            
+        np.savetxt("foo.csv", chan_data, delimiter=",")
         
 
         # Display the header row for the data table.
