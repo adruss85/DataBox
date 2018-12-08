@@ -74,13 +74,20 @@ def main():
 
         print('Starting scan ... Press Ctrl-C to stop\n')
         
-        """Try reading when scanning?"""
+        """read complete output data and place int array"""
         read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+        """create a blank array"""
         chan_data = np.zeros([samples_per_channel, num_channels])
+        """iterate through the array per channel to split out every other
+        sample into the correct column"""
         for i in range (num_channels):
             chan_data[:,i] = read_output.data[i]
             
-        np.savetxt("foo.csv", chan_data, delimiter=",")
+        """write to file"""
+        np.savetxt("output.csv", chan_data, delimiter=",")
+        
+        for i in range (num_channels):
+            print("Max Ch",(i),":", max(chan_data[:,i]))
 
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')

@@ -41,7 +41,7 @@ def main():
     samples_per_channel = 4000
     scan_rate = 4000
     options = OptionFlags.DEFAULT
-    timeout = 10.0
+    timeout = 1.0
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -89,12 +89,12 @@ def main():
             print('    Channel ', chan, sep='', end='')
         print('')
 
-        try:
-            read_and_display_data(hat, samples_per_channel, num_channels)
+        #try:
+            #read_and_display_data(hat, samples_per_channel, num_channels)
 
-        except KeyboardInterrupt:
+        #except KeyboardInterrupt:
             # Clear the '^C' from the display.
-            print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
+            #print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
 
     except (HatError, ValueError) as err:
         print('\n', err)

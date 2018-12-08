@@ -81,14 +81,14 @@ def main():
             for j in range (samples_per_channel):
                 if j==0:
                     y = str("Channel") + " " + str(i)
-                    np.append(y, chan_data)#[i,j] = str("Channel") + " " + str(i)
+                    chan_data.append(y)#[i,j] = str("Channel") + " " + str(i)
             x= read_output.data[i]
-            np.append(chan_data, x)
+            chan_data.append(x)
             #chan_data[:,i] = read_output.data[i]
-        chan_data2 = np.asarray(chan_data)
+        chan_data2 = np.asarray(chan_data, dtype = str)
         print(y)
         print(x)
-        print(chan_data)
+        print(chan_data2)
         f = open("bar.txt", "a")
         f.write(chan_data2)
         f.close   
