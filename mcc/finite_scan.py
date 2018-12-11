@@ -17,7 +17,6 @@
 
 """
 from __future__ import print_function
-import numpy as np
 from time import sleep
 from sys import stdout
 from daqhats import mcc118, OptionFlags, HatIDs, HatError
@@ -34,12 +33,12 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0, 1, 2]
+    channels = [0, 1, 2, 3]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
     samples_per_channel = 10000
-    scan_rate = 1000
+    scan_rate = 1000.0
     options = OptionFlags.DEFAULT
 
     try:
@@ -62,10 +61,10 @@ def main():
         print('    Samples per channel', samples_per_channel)
         print('    Options: ', enum_mask_to_string(OptionFlags, options))
 
-        #try:
-            #input('\nPress ENTER to continue ...')
-        #except (NameError, SyntaxError):
-            #pass
+        try:
+            input('\nPress ENTER to continue ...')
+        except (NameError, SyntaxError):
+            pass
 
         # Configure and start the scan.
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
@@ -73,18 +72,26 @@ def main():
 
         print('Starting scan ... Press Ctrl-C to stop\n')
 
+            """Try reading when scanning?"""
+        read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+        chan_data = np.zeros([samples_per_channel, num_channels])
+        for i in range (num_channels):
+            chan_data[:,i] = read_output.data[i]
+            
+        np.savetxt("foo.csv", chan_data, delimiter=",")
+
         # Display the header row for the data table.
         print('Samples Read    Scan Count', end='')
         for chan in channels:
             print('    Channel ', chan, sep='', end='')
         print('')
 
-        try:
-            read_and_display_data(hat, samples_per_channel, num_channels)
+        #try:
+            #read_and_display_data(hat, samples_per_channel, num_channels)
 
-        except KeyboardInterrupt:
+        #except KeyboardInterrupt:
             # Clear the '^C' from the display.
-            print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
+            #print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
 
     except (HatError, ValueError) as err:
         print('\n', err)
@@ -107,12 +114,8 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
 
     """
     total_samples_read = 0
-    read_request_size = 1
+    read_request_size = 500
     timeout = 5.0
-    #read_result_data1 = np.zeros()
-    
-    f = open("data.txt", "w")
-    f.close()
 
     # Continuously update the display value until Ctrl-C is
     # pressed or the number of samples requested has been read.
@@ -133,10 +136,6 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
         # Display the last sample for each channel.
         print('\r{:12}'.format(samples_read_per_channel),
               ' {:12} '.format(total_samples_read), end='')
-        f = open("data.txt", "a")
-        ch = str(read_result.data[0]) + " " + str(read_result.data[1]) + " " + str(read_result.data[2])
-        f.write(ch + '\n')
-        f.close()
 
         if samples_read_per_channel > 0:
             index = samples_read_per_channel * num_channels - num_channels
@@ -149,7 +148,6 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
             sleep(0.1)
 
     print('\n')
-    return read_result
 
 
 if __name__ == '__main__':
