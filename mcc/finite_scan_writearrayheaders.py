@@ -76,7 +76,23 @@ def main():
 
         """Try reading when scanning?"""
         read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
-        chan_data = [] #np.zeros([samples_per_channel +1, num_channels])
+        chan_data = np.zeros([samples_per_channel, num_channels])
+        chan_title = []
+        
+        ####  NEW CODE ###################################################################
+        
+        for i in range(num_channels):
+            for j in range(samples_per_channel):
+                if j ==0:
+                    y = str('Channel') + ' ' + str(i)
+                    chan_title.append(str(y))
+            chan_data[:, i] = read_output.data[i]
+        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
+        
+        np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
+        ########################################################################################
+        
+        """
         for i in range (num_channels):
             for j in range (samples_per_channel):
                 if j==0:
@@ -93,6 +109,7 @@ def main():
         f.write(chan_data2)
         f.close   
         #np.savetxt("foo.csv", chan_data, delimiter=",")
+        """
         
 
         # Display the header row for the data table.
