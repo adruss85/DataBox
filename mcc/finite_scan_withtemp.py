@@ -92,8 +92,7 @@ def main():
         for i in range (num_channels):
             print("Max Ch",(i),":", max(chan_data[:,i]))
 
-        try:
-        	temperature()
+        temperature()
 
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')
@@ -163,18 +162,19 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
             sleep(0.1)
 
     print('\n')
+    
+def c_to_f(c):
+        return c * 9.0 / 5.0 + 32.0
 
-def temperature()
+def temperature():
 	# Raspberry Pi software SPI configuration.
-	CLK = 25
-	CS  = 24
-	DO  = 18
-	sensor = MAX31855.MAX31855(CLK, CS, DO)
-
-	temp = sensor.readTempC()
+    CLK = 25
+    CS  = 24
+    DO  = 18
+    sensor = MAX31855.MAX31855(CLK, CS, DO)
+    temp = sensor.readTempC()
     internal = sensor.readInternalC()
     print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
-
 
 
 if __name__ == '__main__':
