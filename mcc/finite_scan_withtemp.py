@@ -92,10 +92,9 @@ def main():
         for i in range (num_channels):
             max_data = max(chan_data[:,i])
             print("Max Ch",(i),":", max_data)
-            
-            
 
         temperature()
+        print(temperature())
 
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')
@@ -178,6 +177,7 @@ def temperature():
     temp = sensor.readTempC()
     internal = sensor.readInternalC()
     print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
+    return temp
 
 
 if __name__ == '__main__':
