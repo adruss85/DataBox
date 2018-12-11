@@ -90,7 +90,10 @@ def main():
         np.savetxt("output.csv", chan_data, delimiter=",")
         
         for i in range (num_channels):
-            print("Max Ch",(i),":", max(chan_data[:,i]))
+            max_data = max(chan_data[:,i])
+            print("Max Ch",(i),":", max_data)
+            
+            
 
         temperature()
 
