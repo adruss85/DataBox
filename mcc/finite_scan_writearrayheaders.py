@@ -77,7 +77,7 @@ def main():
         """Try reading when scanning?"""
         read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
         chan_data = np.zeros([samples_per_channel, num_channels])
-        chain_title = []
+        chan_title = []
         
         ####  NEW CODE ###################################################################
         
@@ -86,8 +86,9 @@ def main():
                 if j ==0:
                     y = str('Channel') + ' ' + str(i)
                     chan_title.append(str(y))
-            chan_data[:, i] = read_output[i]
+            chan_data[:, i] = read_output.data[i]
         chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
+        
         np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
         ########################################################################################
         
