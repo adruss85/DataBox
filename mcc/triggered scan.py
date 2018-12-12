@@ -81,46 +81,38 @@ def main():
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
                             options)
 
-        try:
-            # wait for the external trigger to occur
-            print('\nWaiting for trigger ... hit Ctrl-C to cancel the trigger')
-            wait_for_trigger(hat)
+        #try:
+        # wait for the external trigger to occur
+        print('\nWaiting for trigger ... hit Ctrl-C to cancel the trigger')
+        wait_for_trigger(hat)
 
-            print('\nStarting scan ... Press Ctrl-C to stop\n')
+        print('\nStarting scan ... Press Ctrl-C to stop\n')
 
-            """read complete output data and place int array"""
-        	read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
-        	"""create a blank array"""
-        	chan_data = np.zeros([samples_per_channel, num_channels])
-        	chan_title = []
-	        for i in range(num_channels):
-	            for j in range(samples_per_channel):
-	                if j ==0:
-	                    y = str('Channel') + ' ' + str(i)
-	                    chan_title.append(str(y))
-	            chan_data[:, i] = read_output.data[i]
-	        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
-        
-        	np.savetxt('force_data.csv', chan_final, fmt = '%5s', delimiter = ',')
-        
-        	for i in range (num_channels):
-            	max_data = max(chan_data[:,i])
-            	print("Max Ch",(i),":", max_data)
+        """read complete output data and place int array"""
+    	read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+    	"""create a blank array"""
+    	chan_data = np.zeros([samples_per_channel, num_channels])
+    	chan_title = []
+        for i in range(num_channels):
+            for j in range(samples_per_channel):
+                if j ==0:
+                    y = str('Channel') + ' ' + str(i)
+                    chan_title.append(str(y))
+            chan_data[:, i] = read_output.data[i]
+        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
+    
+    	np.savetxt('force_data.csv', chan_final, fmt = '%5s', delimiter = ',')
+    
+    	for i in range (num_channels):
+        	max_data = max(chan_data[:,i])
+        	print("Max Ch",(i),":", max_data)
 
-        	temperature()
-        	print(temperature())
+    	temperature()
+    	print(temperature())
 
-            # Display the header row for the data table.
-            #print('Samples Read    Scan Count', end='')
-            #for chan in channels:
-                #print('    Channel ', chan, sep='', end='')
-            #print('')
-
-            #read_and_display_data(hat, samples_per_channel, num_channels)
-
-        except KeyboardInterrupt:
+        #except KeyboardInterrupt:
             # Clear the '^C' from the display.
-            print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
+            #print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
 
     except (HatError, ValueError) as err:
         print('\n', err)
