@@ -17,11 +17,12 @@
         of data received from the device.  The acquisition is stopped when
         the specified number of samples is acquired for each channel.
 """
+
+from __future__ import print_function
 import numpy as np
 import datetime
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MAX31855.MAX31855 as MAX31855
-from __future__ import print_function
 from time import sleep
 from sys import stdout
 from daqhats import mcc118, OptionFlags, TriggerModes, HatIDs, HatError
