@@ -39,14 +39,15 @@ def main():
     """
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0]
+    channels = [0,1]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
     samples_per_channel = 4000
     scan_rate = 4000
     options = OptionFlags.EXTTRIGGER
-    trigger_mode = TriggerModes.RISING_EDGE
+    trigger_mode = TriggerModes.ACTIVE_HIGH
+    timeout = 5.0
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -110,6 +111,7 @@ def main():
 
     	temperature()
     	print(temperature())
+        print(max(read_output.data)*12)
 
         #except KeyboardInterrupt:
             # Clear the '^C' from the display.

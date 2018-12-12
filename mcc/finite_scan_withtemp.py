@@ -37,13 +37,13 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0, 1, 2, 3]
+    channels = [0,1]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
-    samples_per_channel = 4000
-    scan_rate = 4000.0
-    timeout = 1.0
+    samples_per_channel = 5000
+    scan_rate = 1000
+    timeout = 5
     options = OptionFlags.DEFAULT
 
     try:
@@ -90,6 +90,7 @@ def main():
         force_data = load_cell_conv(chan_data)
         np.savetxt("output.csv", chan_data, delimiter=",")
         np.savetxt("force.csv", force_data, delimiter=",")
+        np.savetxt("raw.csv", read_output.data, delimiter=",")
         
         for i in range (num_channels):
             max_data = max(force_data[:,i])
@@ -97,6 +98,7 @@ def main():
 
         temperature()
         print(temperature())
+        print(max(read_output.data)*12)
 
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')
