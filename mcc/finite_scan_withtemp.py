@@ -87,9 +87,9 @@ def main():
             chan_data[:,i] = read_output.data[i]
             
         """write to file"""
-        force_data = chan_data * 12
+        force_data = load_cell_conv(chan_data)
         np.savetxt("output.csv", chan_data, delimiter=",")
-        np.savetxt("force.csv", force_data. delimiter=",")
+        np.savetxt("force.csv", force_data, delimiter=",")
         
         for i in range (num_channels):
             max_data = max(force_data[:,i])
@@ -180,6 +180,9 @@ def temperature():
     internal = sensor.readInternalC()
     #print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
     return temp
+    
+def load_cell_conv(f):
+    return f * 12
 
 
 if __name__ == '__main__':
