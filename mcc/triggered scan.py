@@ -89,34 +89,34 @@ def main():
             print('\nStarting scan ... Press Ctrl-C to stop\n')
 
             """read complete output data and place int array"""
-        	read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
-        	"""create a blank array"""
-        	chan_data = np.zeros([samples_per_channel, num_channels])
-        	chan_title = []
-	        for i in range(num_channels):
-	            for j in range(samples_per_channel):
-	                if j ==0:
-	                    y = str('Channel') + ' ' + str(i)
-	                    chan_title.append(str(y))
-	            chan_data[:, i] = read_output.data[i]
-	        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
-        
-        	np.savetxt('force_data.csv', chan_final, fmt = '%5s', delimiter = ',')
-        
-        	for i in range (num_channels):
-            	max_data = max(chan_data[:,i])
-            	print("Max Ch",(i),":", max_data)
+    	read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+    	"""create a blank array"""
+    	chan_data = np.zeros([samples_per_channel, num_channels])
+    	chan_title = []
+        for i in range(num_channels):
+            for j in range(samples_per_channel):
+                if j ==0:
+                    y = str('Channel') + ' ' + str(i)
+                    chan_title.append(str(y))
+            chan_data[:, i] = read_output.data[i]
+        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
+    
+    	np.savetxt('force_data.csv', chan_final, fmt = '%5s', delimiter = ',')
+    
+    	for i in range (num_channels):
+        	max_data = max(chan_data[:,i])
+        	print("Max Ch",(i),":", max_data)
 
-        	temperature()
-        	print(temperature())
+    	temperature()
+    	print(temperature())
 
-            # Display the header row for the data table.
-            #print('Samples Read    Scan Count', end='')
-            #for chan in channels:
-                #print('    Channel ', chan, sep='', end='')
-            #print('')
+        # Display the header row for the data table.
+        #print('Samples Read    Scan Count', end='')
+        #for chan in channels:
+            #print('    Channel ', chan, sep='', end='')
+        #print('')
 
-            #read_and_display_data(hat, samples_per_channel, num_channels)
+        #read_and_display_data(hat, samples_per_channel, num_channels)
 
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
