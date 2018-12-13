@@ -98,6 +98,9 @@ def main():
                 
         chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
         np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
+
+        print(max(read_output.data))
+        print(max(chan_final))
         
         ########################################################################################
         
