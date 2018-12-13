@@ -18,6 +18,9 @@
 """
 from __future__ import print_function
 import numpy as np
+import datetime
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_MAX31855.MAX31855 as MAX31855
 from time import sleep
 from sys import stdout
 from daqhats import mcc118, OptionFlags, HatIDs, HatError
@@ -34,14 +37,21 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0, 1, 2, 3]
+    no_of_channels = 5   # Creates the list of channels. 
+    channels = np.ndarray.tolist(np.arange((no_of_channels), dtype = int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
+    
     samples_per_channel = 4000
-    scan_rate = 4000.0
-    timeout = 1.0
+    if (num_channels %2) == 0:
+        samples = int(samples_per_channel*num_channels)
+    else:
+        samples = int(mt.ceil(samples_per_channel*num_channels))
+        
+    scan_rate = 4000
     options = OptionFlags.DEFAULT
+    timeout = 10.0
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -78,17 +88,28 @@ def main():
         read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
         """create a blank array"""
         chan_data = np.zeros([samples_per_channel, num_channels])
-        """iterate through the array per channel to split out every other
-        sample into the correct column"""
-        for i in range (num_channels):
-            chan_data[:,i] = read_output.data[i]
-            
-        """write to file"""
-        np.savetxt("output.csv", chan_data, delimiter=",")
+        """create title array"""
+        chan_title = []
         
-        for i in range (num_channels):
-            print("Max Ch",(i),":", max(chan_data[:,i]))
+        """iterate through the array per channel to split out every other
+        sample into the correct column"""     
+             
+        for i in range(num_channels):
+            for j in range(samples_per_channel):
+                if j ==0:
+                    y = str('Channel') + ' ' + str(i)
+                    chan_title.append(str(y))
+            if i < samples_per_channel-num_channels:
+                chan_data[: , i] = read_output.data[i::num_channels]
+                
+        print('Iterated through loop\n')
+                
+        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
+        np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
 
+        print(max(read_output.data))
+
+        print(temperature())
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')
         #for chan in channels:
@@ -157,6 +178,23 @@ def read_and_display_data(hat, samples_per_channel, num_channels):
             sleep(0.1)
 
     print('\n')
+    
+def c_to_f(c):
+        return c * 9.0 / 5.0 + 32.0
+
+def temperature():
+	# Raspberry Pi software SPI configuration.
+    CLK = 25
+    CS  = 24
+    DO  = 18
+    sensor = MAX31855.MAX31855(CLK, CS, DO)
+    temp = sensor.readTempC()
+    internal = sensor.readInternalC()
+    #print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
+    return temp
+    
+def load_cell_conv(f):
+    return f * 12
 
 
 if __name__ == '__main__':
