@@ -26,6 +26,7 @@ from sys import stdout
 from daqhats import mcc118, OptionFlags, HatIDs, HatError
 from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
+import math as mt   # Added the math package
 
 CURSOR_BACK_2 = '\x1b[2D'
 ERASE_TO_END_OF_LINE = '\x1b[0K'
@@ -37,7 +38,7 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    no_of_channels = 5   # Creates the list of channels. 
+    no_of_channels = 1   # Creates the list of channels. 
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype = int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
@@ -90,7 +91,7 @@ def main():
         chan_data = np.zeros([samples_per_channel, num_channels])
         """create title array"""
         chan_title = []
-        
+        force_data = read_output.data * 12
         """iterate through the array per channel to split out every other
         sample into the correct column"""     
              
@@ -100,7 +101,7 @@ def main():
                     y = str('Channel') + ' ' + str(i)
                     chan_title.append(str(y))
             if i < samples_per_channel-num_channels:
-                chan_data[: , i] = read_output.data[i::num_channels]
+                chan_data[: , i] = force_data[i::num_channels]
                 
         print('Iterated through loop\n')
                 
