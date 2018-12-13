@@ -83,22 +83,22 @@ def main():
         chan_data = np.zeros([samples_per_channel, num_channels])
         """iterate through the array per channel to split out every other
         sample into the correct column"""
-        for i in range (num_channels):
-            chan_data[:,i] = read_output.data[i]
-            
-        """write to file"""
-        force_data = load_cell_conv(chan_data)
-        np.savetxt("output.csv", chan_data, delimiter=",")
-        np.savetxt("force.csv", force_data, delimiter=",")
-        np.savetxt("raw.csv", read_output.data, delimiter=",")
-        
-        for i in range (num_channels):
-            max_data = max(force_data[:,i])
-            print("Max Ch",(i),":", max_data)
+        chan_title = []
+        for i in range(num_channels):
+            for j in range(samples_per_channel):
+                if j ==0:
+                    y = str('Channel') + ' ' + str(i)
+                    chan_title.append(str(y))
+            if i < samples_per_channel-num_channels:
+                chan_data[: , i] = read_output[i::num_channels]
+                
+        print('Iterated through loop\n')
+                
+        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
+        np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
 
-        temperature()
-        print(temperature())
-        print(max(read_output.data)*12)
+        print(max(read_output.data))
+        print(max(chan_final))
 
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')

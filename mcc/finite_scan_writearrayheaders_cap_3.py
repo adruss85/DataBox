@@ -34,17 +34,17 @@ def main():
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
     
-    no_of_channels = 1    # Creates the list of channels. 
+    no_of_channels = 5   # Creates the list of channels. 
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype = int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
     
-    samples = 4000
+    samples_per_channel = 4000
     if (num_channels %2) == 0:
-        samples_per_channel = int(samples/num_channels)
+        samples = int(samples_per_channel*num_channels)
     else:
-        samples_per_channel = int(mt.ceil(samples/num_channels))
+        samples = int(mt.ceil(samples_per_channel*num_channels))
         
     scan_rate = 4000
     options = OptionFlags.DEFAULT
@@ -86,6 +86,8 @@ def main():
         chan_data = np.zeros([samples_per_channel, num_channels])
         chan_title = []
         
+        print('Array created\n')
+        
         ####  NEW CODE ###################################################################
         
         for i in range(num_channels):
@@ -94,13 +96,14 @@ def main():
                     y = str('Channel') + ' ' + str(i)
                     chan_title.append(str(y))
             if i < samples_per_channel-num_channels:
-                chan_data[: , i] = read_output[i::num_channels]
+                chan_data[: , i] = read_output.data[i::num_channels]
+                
+        print('Iterated through loop\n')
                 
         chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
         np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
 
         print(max(read_output.data))
-        print(max(chan_final))
         
         ########################################################################################
         
