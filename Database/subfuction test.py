@@ -16,27 +16,27 @@
         acquired for each channel.
 
 """
-from __future__ import print_function
-import numpy as np
+#from __future__ import print_function
+#import numpy as np
 import datetime
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_MAX31855.MAX31855 as MAX31855
-from time import sleep
-from sys import stdout
-from daqhats import mcc118, OptionFlags, HatIDs, HatError
-from daqhats_utils import select_hat_device, enum_mask_to_string, \
-chan_list_to_mask
+#import Adafruit_GPIO.SPI as SPI
+#import Adafruit_MAX31855.MAX31855 as MAX31855
+#from time import sleep
+#from sys import stdout
+#from daqhats import mcc118, OptionFlags, HatIDs, HatError
+#from daqhats_utils import select_hat_device, enum_mask_to_string, \
+#chan_list_to_mask
 import pyodbc
 
 
 def main():
 
-now = datetime.datetime.now()
-ID = '1'
-Force = '32.5435345'
-Temp = '24'
+    now = datetime.datetime.now()
+    ID = '1'
+    Force = '32.5435345'
+    Temp = '24'
 
-database_upload(now, ID, Force, Temp)
+    database_upload(now, ID, Force, Temp)
 
 
 def database_upload(now, ID, Force, Temp):
