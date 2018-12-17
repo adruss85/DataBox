@@ -32,9 +32,9 @@ import pyodbc
 def main():
 
     now = datetime.datetime.now()
-    ID = '1'
-    Force = '32.5435345'
-    Temp = '24'
+    ID = 1
+    Force = 32.5435345
+    Temp = 24
 
     database_upload(now, ID, Force, Temp)
 
