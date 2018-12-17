@@ -32,7 +32,7 @@ import pyodbc
 def main():
 
     now = datetime.datetime.now()
-    ID = 1
+    ID = 2
     Force = 32.5435345
     Temp = 24
 

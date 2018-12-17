@@ -27,6 +27,7 @@ from daqhats import mcc118, OptionFlags, HatIDs, HatError
 from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
+import pyodbc
 
 CURSOR_BACK_2 = '\x1b[2D'
 ERASE_TO_END_OF_LINE = '\x1b[0K'
@@ -108,9 +109,15 @@ def main():
         chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis = 0)
         np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
 
-        print(max(read_output.data))
+       
+        now =  datetime.datetime.now()
+        ID = 2
+        Force = max(read_output.data)*12
+        Temp = temperature()
 
-        print(temperature())
+        print(Force)
+        print(Temp)
+        database_upload(now, ID, Force, Temp)
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')
         #for chan in channels:
@@ -197,6 +204,19 @@ def temperature():
 def load_cell_conv(f):
     return f * 12
 
+def database_upload(now, ID, Force, Temp):
+
+    con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
+    cursor = con.cursor()
+    #print(con)
+    print('Uploading...')
+
+
+    cursor.execute("INSERT INTO dbo.Data2 ([Date Time], ID, Force, Temperature) VALUES (?, ?, ?, ?)", now, ID, Force, Temp) 
+    con.commit()
+    
+    con.close()
+    print('Data Upload Successful')
 
 if __name__ == '__main__':
     main()

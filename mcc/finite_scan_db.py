@@ -38,7 +38,7 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0,1]
+    channels = [0]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
@@ -99,7 +99,7 @@ def main():
         np.savetxt('foo.csv', chan_final, fmt = '%5s', delimiter = ',')
 
         now =  datetime.datetime.now()
-        ID = 1
+        ID = 2
         Force = max(chan_final)
         Temp = temperature()
 
