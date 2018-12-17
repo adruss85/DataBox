@@ -112,7 +112,7 @@ def main():
        
         now =  datetime.datetime.now()
         ID = 2
-        Force = max(read_output.data)*12
+        Force = np.float(max(chan_data))
         Temp = temperature()
 
         print(Force)
