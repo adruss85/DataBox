@@ -46,7 +46,7 @@ def fs():
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
-    samples_per_channel = int(totvar.get())
+    samples_per_channel = int((totvar.get()/1000)*ratevar.get())
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
@@ -152,13 +152,13 @@ fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
 fcwtbutton.grid(row=0, column=2, pady=10)
 
 """INPUTS"""
-idin = Entry(f2, textvariable=idvar, justify='center')
+idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
 idin.grid(row=0, column=1, padx=20, pady=10)
-chanin = Entry(f2, textvariable=chanvar, justify='center')
+chanin = OptionMenu(f2, chanvar, 1, 2, 3, 4, 5, 6, 7, 8)
 chanin.grid(row=1, column=1, padx=20, pady=10)
-ratein = Entry(f2, textvariable=ratevar, justify='center')
+ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
 ratein.grid(row=2, column=1, padx=20, pady=10)
-totin = Entry(f2, textvariable=totvar, justify='center')
+totin = OptionMenu(f2, totvar, 500, 1000, 2000, 5000, 10000)
 totin.grid(row=3, column=1, padx=20, pady=10)
 
 """LABELS"""
@@ -169,7 +169,7 @@ chanlab = Label(f2, text="Number of channels")
 chanlab.grid(row=1, column=0)
 ratelab = Label(f2, text="Sample rate (Hz)")
 ratelab.grid(row=2, column=0)
-totlab = Label(f2, text="Samples per channel")
+totlab = Label(f2, text="Sample duration (ms)")
 totlab.grid(row=3, column=0)
 
 
