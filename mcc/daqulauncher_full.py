@@ -6,15 +6,15 @@ import subprocess
 from Tkinter import*
 import numpy as np
 import datetime
-#import Adafruit_GPIO.SPI as SPI
-#import Adafruit_MAX31855.MAX31855 as MAX31855
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_MAX31855.MAX31855 as MAX31855
 from time import sleep
 from sys import stdout
-#from daqhats import mcc118, OptionFlags, HatIDs, HatError
-#from daqhats_utils import select_hat_device, enum_mask_to_string, \
+from daqhats import mcc118, OptionFlags, HatIDs, HatError
+from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
-#import pyodbc
+import pyodbc
 import sys
 
 """FRAMES"""
@@ -33,31 +33,26 @@ chanvar = StringVar()
 ratevar = StringVar()
 totvar = StringVar()
 id = 1
-chan = 1
-rate = ratevar.get()
-tot = totvar.get()
-print(id, chan, rate, tot)
 """FUNCTIONS TO CALL"""
-def fs(id, chan, rate, tot):
-    print(id, chan, rate, tot)
+def fs():
     """
         This function is executed automatically when the module is run directly.
         """
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    no_of_channels = chan  # Creates the list of channels.
+    no_of_channels = int(chanvar.get())  # Creates the list of channels.
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
-    samples_per_channel = tot
+    samples_per_channel = int(totvar.get())
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
         samples = int(mt.ceil(samples_per_channel * num_channels))
 
-    scan_rate = rate
+    scan_rate = int(ratevar.get())
     options = OptionFlags.DEFAULT
     timeout = 10.0
 
@@ -147,7 +142,7 @@ def fswt():
     os.system('python ./mcc/finite_scan_with_trigger.py')
 
 """LAUNCHER BUTTONS"""
-finitebutton = Button(f1, text="Finite Scan", command=fs(id, chan, rate, tot))
+finitebutton = Button(f1, text="Finite Scan", command=fs)
 finitebutton.grid(row=0, column=0, pady=10)
 
 continuousbutton = Button(f1, text="Continuous Scan", command=cs)
