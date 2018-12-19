@@ -28,11 +28,11 @@ f2 = Frame(root, width=400, height=100)
 f2.pack(side=BOTTOM)
 
 """"VARIABLES"""
-
+idvar = StringVar()
 chanvar = StringVar()
 ratevar = StringVar()
 totvar = StringVar()
-id = 1
+
 """FUNCTIONS TO CALL"""
 def fs():
     """
@@ -111,7 +111,7 @@ def fs():
         np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
 
         now = datetime.datetime.now()
-        ID = id
+        ID = int(idvar.get())
         Force = max(read_output.data) * 12
         Temp = temperature()
 
@@ -152,7 +152,7 @@ fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
 fcwtbutton.grid(row=0, column=2, pady=10)
 
 """INPUTS"""
-idin = Entry(f2, text=id, justify='center')
+idin = Entry(f2, textvariable=idvar, justify='center')
 idin.grid(row=0, column=1, padx=20, pady=10)
 chanin = Entry(f2, textvariable=chanvar, justify='center')
 chanin.grid(row=1, column=1, padx=20, pady=10)
