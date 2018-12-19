@@ -6,15 +6,15 @@ import subprocess
 from Tkinter import*
 import numpy as np
 import datetime
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_MAX31855.MAX31855 as MAX31855
+#import Adafruit_GPIO.SPI as SPI
+#import Adafruit_MAX31855.MAX31855 as MAX31855
 from time import sleep
 from sys import stdout
-from daqhats import mcc118, OptionFlags, HatIDs, HatError
-from daqhats_utils import select_hat_device, enum_mask_to_string, \
+#from daqhats import mcc118, OptionFlags, HatIDs, HatError
+#from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
-import pyodbc
+#import pyodbc
 import sys
 
 """FRAMES"""
@@ -28,18 +28,18 @@ f2 = Frame(root, width=400, height=100)
 f2.pack(side=BOTTOM)
 
 """"VARIABLES"""
-idvar = 1
+
 chanvar = StringVar()
 ratevar = StringVar()
 totvar = StringVar()
-id = idvar.get()
-chan = chanvar.get()
+id = 1
+chan = 1
 rate = ratevar.get()
 tot = totvar.get()
 print(id, chan, rate, tot)
 """FUNCTIONS TO CALL"""
 def fs(id, chan, rate, tot):
-    print(idvar.get(), chanvar.get(), ratevar.get(), totvar.get())
+    print(id, chan, rate, tot)
     """
         This function is executed automatically when the module is run directly.
         """
@@ -147,7 +147,7 @@ def fswt():
     os.system('python ./mcc/finite_scan_with_trigger.py')
 
 """LAUNCHER BUTTONS"""
-finitebutton = Button(f1, text="Finite Scan", command=fs)
+finitebutton = Button(f1, text="Finite Scan", command=fs(id, chan, rate, tot))
 finitebutton.grid(row=0, column=0, pady=10)
 
 continuousbutton = Button(f1, text="Continuous Scan", command=cs)
@@ -157,7 +157,7 @@ fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
 fcwtbutton.grid(row=0, column=2, pady=10)
 
 """INPUTS"""
-idin = Label(f2, text=idvar, justify='center')
+idin = Entry(f2, text=id, justify='center')
 idin.grid(row=0, column=1, padx=20, pady=10)
 chanin = Entry(f2, textvariable=chanvar, justify='center')
 chanin.grid(row=1, column=1, padx=20, pady=10)
