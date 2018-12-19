@@ -45,8 +45,8 @@ def fs():
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
-
-    samples_per_channel = int((totvar.get()/1000)*ratevar.get())
+    
+    samples_per_channel = int(totvar.get())/1000*int(ratevar.get())
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
