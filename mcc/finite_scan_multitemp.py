@@ -113,11 +113,12 @@ def main():
         now =  datetime.datetime.now()
         ID = 2
         Force = np.float(max(chan_data))
-        Temp = temperature()
+        t1, t2 = temperature()
 
         print(Force)
-        print(Temp)
-        database_upload(now, ID, Force, Temp)
+        print(t1)
+        print(t2)
+        #database_upload(now, ID, Force, Temp)
         # Display the header row for the data table.
         #print('Samples Read    Scan Count', end='')
         #for chan in channels:
