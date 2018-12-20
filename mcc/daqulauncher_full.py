@@ -15,6 +15,7 @@ from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
 import pyodbc
+import matplotlib.pyplot as plt
 import sys
 
 """FRAMES"""
@@ -132,6 +133,7 @@ def fs():
         # print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
 
         ResultsWindow(Force, Temp)
+        Plot(force_data)
 
     except (HatError, ValueError) as err:
         print('\n', err)
@@ -194,6 +196,10 @@ def temperature():
 def load_cell_conv(f):
     return f * 12
 
+def Plot(force_data):
+    plt.plot(force_data)
+    plt.ylabel('some numbers')
+    plt.show()
 
 def database_upload(now, ID, Force, Temp):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")

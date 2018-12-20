@@ -3,6 +3,7 @@
 from Tkinter import*
 import os
 import subprocess
+import matplotlib.pyplot as plt
 import sys
 
 """FRAMES"""
@@ -25,6 +26,7 @@ def fs():
     print(idvar.get(), chanvar.get(), ratevar.get(), totvar.get())
     #os.system('python ./mcc/finite_scan.py')
     Window2()
+    Plot()
 
 def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
@@ -74,9 +76,15 @@ def Window2():
     root2 = Tk()
     root2.title("Window 2")
 
-    Label2 = Label(root2,text=ratevar.get() ,width=60)
+    Label2 = Label(root2,text=ratevar.get(), width=60)
     Label2.grid(row=0, column=0)
 
     root2.mainloop()
+
+def Plot():
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
+    plt.show()
+
 
 root.mainloop()
