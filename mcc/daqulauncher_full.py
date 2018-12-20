@@ -131,6 +131,8 @@ def fs():
         # Clear the '^C' from the display.
         # print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
 
+        ResultsWindow(Force, Temp)
+
     except (HatError, ValueError) as err:
         print('\n', err)
 
@@ -205,5 +207,20 @@ def database_upload(now, ID, Force, Temp):
 
     con.close()
     print('Data Upload Successful')
+
+def ResultsWindow(Force, Temp):
+    root2 = Tk()
+    root2.title("Results")
+
+    LabelForce = Label(root2, text="Force (kN)")
+    LabelForce.grid(row=0, column=0)
+    LabelTemp = Label(root2, text="Temp (C)")
+    LabelTemp.grid(row=1, column=0)
+    ResultForce = Label(root2, text=Force)
+    ResultForce.grid(row=0, column=1)
+    ResultTemp = Label(root2, text=Temp)
+    ResultTemp.grid(row=1, column=1)
+
+    root2.mainloop()
 
 root.mainloop()
