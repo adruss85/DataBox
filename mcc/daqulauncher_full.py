@@ -132,9 +132,10 @@ def fs():
         # Clear the '^C' from the display.
         # print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
 
-        ResultsWindow(Force, Temp)
-        Plot(force_data)
 
+        Plot(force_data)
+        ResultsWindow(Force, Temp)
+        
     except (HatError, ValueError) as err:
         print('\n', err)
 
