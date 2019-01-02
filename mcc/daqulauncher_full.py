@@ -10,7 +10,7 @@ import Adafruit_GPIO.SPI as SPI
 import Adafruit_MAX31855.MAX31855 as MAX31855
 from time import sleep
 from sys import stdout
-from daqhats import mcc118, OptionFlags, HatIDs, HatError
+from daqhats import mcc118, OptionFlags, TriggerModes, HatIDs, HatError
 from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
