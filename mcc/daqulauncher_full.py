@@ -40,6 +40,8 @@ chanvar.set(1)
 ratevar.set(4000)
 totvar.set(1000)
 trigvar.set("TriggerModes.RISING_EDGE")
+f = open("count.txt", "r")
+counter.set(f.read())
 
 """FUNCTIONS TO CALL"""
 def fs():
@@ -326,6 +328,12 @@ def fswtl():
                 print(Force)
                 print(Temp)
                 database_upload(now, ID, Force, Temp)
+
+                #Counter stepping
+                counter.set(counter.get() + 1)
+                f = open('count.txt', 'w')
+                f.write(str(counter.get()))
+                f.close()
 
                 #Plot(force_data)
                 #ResultsWindow(Force, Temp)
