@@ -22,17 +22,25 @@ chanvar = StringVar()
 ratevar = StringVar()
 totvar = StringVar()
 trigvar = StringVar()
+counter = IntVar()
 idvar.set(1)
 chanvar.set(1)
 ratevar.set(4000)
 totvar.set(1000)
 trigvar.set("TriggerModes.RISING_EDGE")
+f = open("count.txt", "r")
+counter.set(f.read())
 
 """FUNCTIONS TO CALL"""
 def fs():
-    print(idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get())
+    print idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get(), counter.get(),
+    counter.set(counter.get() + 1)
+    f = open('count.txt', 'w')
+    f.write(str(counter.get()))
+    f.close()
+
     #os.system('python ./mcc/finite_scan.py')
-    Window2()
+    #Window2()
     #Plot()
 
 def cs():
@@ -54,6 +62,8 @@ trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="Trigge
 trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
 trigin1.grid(row=1, column=2)
 trigin2.grid(row=2, column=2)
+counterin = Entry(f1, textvariable=counter)
+counterin.grid(row=2, column=3)
 
 
 """LAUNCHER BUTTONS"""
@@ -61,13 +71,17 @@ finitebutton = Button(f1, text="Finite Scan", command=fs)
 finitebutton.config(font=("Helvetica", 16))
 finitebutton.grid(row=0, column=0, pady=10)
 
-continuousbutton = Button(f1, text="Continuous Scan", command=cs)
+continuousbutton = Button(f1, text="Continuous Scan", command=fs)
 continuousbutton.config(font=("Helvetica", 16))
 continuousbutton.grid(row=0, column=1, pady=10)
 
-fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
+fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fs)
 fcwtbutton.config(font=("Helvetica", 16))
 fcwtbutton.grid(row=0, column=2, pady=10)
+
+fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fs)
+fcwtlbutton.grid(row=0, column=3, pady=10)
+
 
 """LABELS"""
 
@@ -83,6 +97,8 @@ ratelab.grid(row=2, column=0)
 totlab = Label(f2, text="Sample duration (ms)")
 totlab.config(font=("Helvetica", 16))
 totlab.grid(row=3, column=0)
+counterlab = Label(f1, text="Starting Cycle Count")
+counterlab.grid(row=1, column=3)
 
 def Window2():
     root2 = Tk()

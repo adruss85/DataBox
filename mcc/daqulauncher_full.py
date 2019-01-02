@@ -34,6 +34,7 @@ chanvar = StringVar()
 ratevar = StringVar()
 totvar = StringVar()
 trigvar = StringVar()
+counter = IntVar()
 idvar.set(1)
 chanvar.set(1)
 ratevar.set(4000)
@@ -363,6 +364,8 @@ trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="Trigge
 trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
 trigin1.grid(row=1, column=2)
 trigin2.grid(row=2, column=2)
+counterin = Entry(f1, textvariable=counter)
+counterin.grid(row=2, column=3)
 
 """LABELS"""
 
@@ -374,6 +377,9 @@ ratelab = Label(f2, text="Sample rate (Hz)")
 ratelab.grid(row=2, column=0)
 totlab = Label(f2, text="Sample duration (ms)")
 totlab.grid(row=3, column=0)
+counterlab = Label(f1, text="Starting Cycle Count")
+counterlab.grid(row=1, column=3)
+
 
 """ALL SUBFUNCTIONS"""
 def c_to_f(c):
