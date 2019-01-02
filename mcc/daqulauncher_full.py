@@ -255,6 +255,7 @@ def fswtl():
         scan_rate = int(ratevar.get())
         options = OptionFlags.EXTTRIGGER
         trigger_mode = TriggerModes.RISING_EDGE
+        timeout = 5.0
 
 
         try:
@@ -325,8 +326,8 @@ def fswtl():
                 print(Temp)
                 database_upload(now, ID, Force, Temp)
 
-                Plot(force_data)
-                ResultsWindow(Force, Temp)
+                #Plot(force_data)
+                #ResultsWindow(Force, Temp)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
