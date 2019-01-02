@@ -21,12 +21,19 @@ idvar = StringVar()
 chanvar = StringVar()
 ratevar = StringVar()
 totvar = StringVar()
+trigvar = StringVar()
+idvar.set(1)
+chanvar.set(1)
+ratevar.set(4000)
+totvar.set(1000)
+trigvar.set("TriggerModes.RISING_EDGE")
+
 """FUNCTIONS TO CALL"""
 def fs():
-    print(idvar.get(), chanvar.get(), ratevar.get(), totvar.get())
+    print(idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get())
     #os.system('python ./mcc/finite_scan.py')
     Window2()
-    Plot()
+    #Plot()
 
 def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
@@ -43,6 +50,11 @@ ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
 ratein.grid(row=2, column=1, padx=20, pady=10)
 totin = OptionMenu(f2, totvar, 500, 1000, 2000, 5000, 10000)
 totin.grid(row=3, column=1, padx=20, pady=10)
+trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="TriggerModes.RISING_EDGE")
+trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
+trigin1.grid(row=1, column=2)
+trigin2.grid(row=2, column=2)
+
 
 """LAUNCHER BUTTONS"""
 finitebutton = Button(f1, text="Finite Scan", command=fs)
