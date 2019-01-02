@@ -268,7 +268,7 @@ ratelab.grid(row=2, column=0)
 totlab = Label(f2, text="Sample duration (ms)")
 totlab.grid(row=3, column=0)
 
-
+"""ALL SUBFUNCTIONS"""
 def c_to_f(c):
     return c * 9.0 / 5.0 + 32.0
 
@@ -284,6 +284,26 @@ def temperature():
     # print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
     return temp
 
+def wait_for_trigger(hat):
+    """
+    Monitor the status of the specified HAT device in a loop until the
+    triggered status is True or the running status is False.
+
+    Args:
+        hat (mcc118): The mcc118 HAT device object on which the status will
+            be monitored.
+
+    Returns:
+        None
+
+    """
+    # Read the status only to determine when the trigger occurs.
+    is_running = True
+    is_triggered = False
+    while is_running and not is_triggered:
+        status = hat.a_in_scan_status()
+        is_running = status.running
+        is_triggered = status.triggered
 
 def load_cell_conv(f):
     return f * 12
