@@ -232,6 +232,110 @@ def fswt():
     except (HatError, ValueError) as err:
         print('\n', err)
 
+def fswtl():
+
+    i = 1
+    while i < 6:
+    """
+           This function is executed automatically when the module is run directly.
+           """
+
+    # Store the channels in a list and convert the list to a channel mask that
+    # can be passed as a parameter to the MCC 118 functions.
+    no_of_channels = int(chanvar.get())  # Creates the list of channels.
+    channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
+    channel_mask = chan_list_to_mask(channels)
+    num_channels = len(channels)
+
+    samples_per_channel = int(totvar.get()) / 1000 * int(ratevar.get())
+    if (num_channels % 2) == 0:
+        samples = int(samples_per_channel * num_channels)
+    else:
+        samples = int(mt.ceil(samples_per_channel * num_channels))
+
+    scan_rate = int(ratevar.get())
+    options = OptionFlags.EXTTRIGGER
+    trigger_mode = trigvar.get()
+
+
+    try:
+        # Select an MCC 118 HAT device to use.
+        address = select_hat_device(HatIDs.MCC_118)
+        hat = mcc118(address)
+
+        print('\nSelected MCC 118 HAT device at address', address)
+
+        actual_scan_rate = hat.a_in_scan_actual_rate(num_channels, scan_rate)
+
+        print('\nMCC 118 continuous scan example')
+        print('    Functions demonstrated:')
+        print('         mcc118.trigger_mode')
+        print('         mcc118.a_in_scan_status')
+        print('         mcc118.a_in_scan_start')
+        print('         mcc118.a_in_scan_read')
+        print('    Channels: ', end='')
+        print(', '.join([str(chan) for chan in channels]))
+        print('    Requested scan rate: ', scan_rate)
+        print('    Actual scan rate: ', actual_scan_rate)
+        print('    Samples per channel', samples_per_channel)
+        print('    Options: ', enum_mask_to_string(OptionFlags, options))
+        print('    Trigger Mode: ', trigger_mode.name)
+
+        hat.trigger_mode(trigger_mode)
+
+        # Configure and start the scan.
+        hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
+                            options)
+
+        try:
+            # wait for the external trigger to occur
+            print('\nWaiting for trigger ... hit Ctrl-C to cancel the trigger')
+            wait_for_trigger(hat)
+
+            print('\nStarting scan ... Press Ctrl-C to stop\n')
+
+            """read complete output data and place int array"""
+            read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+            """create a blank array"""
+            chan_data = np.zeros([samples_per_channel, num_channels])
+            """create title array"""
+            chan_title = []
+            force_data = read_output.data * 12
+            """iterate through the array per channel to split out every other
+            sample into the correct column"""
+
+            for i in range(num_channels):
+                for j in range(samples_per_channel):
+                    if j == 0:
+                        y = str('Channel') + ' ' + str(i)
+                        chan_title.append(str(y))
+                if i < samples_per_channel - num_channels:
+                    chan_data[:, i] = force_data[i::num_channels]
+
+            print('Iterated through loop\n')
+
+            chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
+            np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+
+            now = datetime.datetime.now()
+            ID = int(idvar.get())
+            Force = max(read_output.data) * 12
+            Temp = temperature()
+
+            print(Force)
+            print(Temp)
+            database_upload(now, ID, Force, Temp)
+
+            Plot(force_data)
+            ResultsWindow(Force, Temp)
+
+        except KeyboardInterrupt:
+            # Clear the '^C' from the display.
+            print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
+
+    except (HatError, ValueError) as err:
+        print('\n', err)
+
 
 """LAUNCHER BUTTONS"""
 finitebutton = Button(f1, text="Finite Scan", command=fs)
@@ -242,6 +346,9 @@ continuousbutton.grid(row=0, column=1, pady=10)
 
 fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
 fcwtbutton.grid(row=0, column=2, pady=10)
+
+fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fswtl)
+fcwtlbutton.grid(row=0, column=3, pady=10)
 
 """INPUTS"""
 idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
