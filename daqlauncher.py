@@ -10,6 +10,7 @@ matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
+plt.rcParams["figure.figsize"] = (3.2,2.4)
 
 """FRAMES"""
 root = Tk()
@@ -21,7 +22,7 @@ f1.pack(side=TOP)
 f2 = Frame(root, width=400, height=100)
 f2.pack(side=LEFT)
 
-f3 = Canvas(root, width=400, height=100)
+f3 = Frame(root, width=400, height=100)
 f3.pack(side=RIGHT)
 
 """"VARIABLES"""
@@ -50,7 +51,7 @@ def fs():
     #os.system('python ./mcc/finite_scan.py')
 
     Plot()
-    Window2()
+    #Window2()
 
 def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
@@ -120,8 +121,7 @@ def Window2():
 
 def Plot():
     plt.clf()
-    fig = plt.figure(1, figsize=[3.2,2.4])
-    plt.ion()
+    fig = plt.figure(1)
     t = np.arange(0.0, 3.0, 0.01)
     s = np.sin(np.pi * t)
     plt.plot(t, s)
@@ -129,6 +129,7 @@ def Plot():
     canvas = FigureCanvasTkAgg(fig, master=f3)
     plot_widget = canvas.get_tk_widget()
     plot_widget.grid(row=0, column=0)
+
 
 
 root.mainloop()

@@ -17,10 +17,11 @@ import math as mt   # Added the math package
 import pyodbc
 import matplotlib
 matplotlib.use('TkAgg')
-
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
+"""PLT FIGSIZE SETUP"""
+plt.rcParams["figure.figsize"] = (3.2,2.4)
 
 """FRAMES"""
 root = Tk()
