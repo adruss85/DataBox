@@ -145,7 +145,6 @@ def fs():
     except (HatError, ValueError) as err:
         print('\n', err)
 
-
 def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
 
@@ -379,19 +378,19 @@ fcwtlbutton.grid(row=0, column=3, pady=10)
 
 """INPUTS"""
 idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
-idin.grid(row=0, column=1, padx=20, pady=10)
+idin.grid(row=0, column=1, padx=20)
 chanin = OptionMenu(f2, chanvar, 1, 2, 3, 4, 5, 6, 7, 8)
-chanin.grid(row=1, column=1, padx=20, pady=10)
+chanin.grid(row=1, column=1, padx=20)
 ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
-ratein.grid(row=2, column=1, padx=20, pady=10)
+ratein.grid(row=2, column=1, padx=20)
 totin = OptionMenu(f2, totvar, 500, 1000, 2000, 5000, 10000)
-totin.grid(row=3, column=1, padx=20, pady=10)
+totin.grid(row=3, column=1, padx=20)
 trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="TriggerModes.RISING_EDGE")
 trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
 trigin1.grid(row=1, column=2)
 trigin2.grid(row=2, column=2)
 counterin = Entry(f1, textvariable=counter)
-counterin.grid(row=2, column=3)
+counterin.grid(row=2, column=3, pady=10)
 
 """LABELS"""
 
@@ -448,6 +447,10 @@ def load_cell_conv(f):
     return f * 12
 
 def Plot(force_data):
+    #clear plot
+    plt.clf()
+
+    #draw plot
     fig = plt.figure(1, figsize=[3.2,2.4])
     plt.ion()
     plt.plot(force_data)
@@ -459,7 +462,6 @@ def Plot(force_data):
 def database_upload(now, ID, Force, Temp):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
     cursor = con.cursor()
-    # print(con)
     print('Uploading...')
 
     cursor.execute("INSERT INTO dbo.Data2 ([Date Time], ID, Force, Temperature) VALUES (?, ?, ?, ?)", now, ID, Force,
@@ -472,12 +474,12 @@ def database_upload(now, ID, Force, Temp):
 def ResultsWindow(Force, Temp):
 
     LabelForce = Label(f2, text="Force (kN)")
-    LabelForce.grid(row=5, column=0)
+    LabelForce.grid(row=5, column=0, pady=10)
     LabelTemp = Label(f2, text="Temp (C)")
-    LabelTemp.grid(row=6, column=0)
+    LabelTemp.grid(row=6, column=0, pady=10)
     ResultForce = Label(f2, text=Force)
-    ResultForce.grid(row=5, column=1)
+    ResultForce.grid(row=5, column=1, pady=10)
     ResultTemp = Label(f2, text=Temp)
-    ResultTemp.grid(row=6, column=1)
+    ResultTemp.grid(row=6, column=1, pady=10)
 
 root.mainloop()

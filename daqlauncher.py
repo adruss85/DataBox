@@ -119,6 +119,7 @@ def Window2():
     root2.mainloop()
 
 def Plot():
+    plt.clf()
     fig = plt.figure(1, figsize=[3.2,2.4])
     plt.ion()
     t = np.arange(0.0, 3.0, 0.01)
