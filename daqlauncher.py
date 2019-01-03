@@ -3,6 +3,11 @@
 from Tkinter import*
 import os
 import subprocess
+import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
+
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
 
@@ -14,7 +19,10 @@ f1 = Frame(root, width=400, height=80)
 f1.pack(side=TOP)
 
 f2 = Frame(root, width=400, height=100)
-f2.pack(side=BOTTOM)
+f2.pack(side=LEFT)
+
+f3 = Canvas(root, width=400, height=100)
+f3.pack(side=RIGHT)
 
 """"VARIABLES"""
 idvar = StringVar()
@@ -40,8 +48,9 @@ def fs():
     f.close()
 
     #os.system('python ./mcc/finite_scan.py')
-    #Window2()
-    #Plot()
+
+    Plot()
+    Window2()
 
 def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
@@ -110,9 +119,15 @@ def Window2():
     root2.mainloop()
 
 def Plot():
-    plt.plot([1, 2, 3, 4])
-    plt.ylabel('some numbers')
-    plt.show()
+    fig = plt.figure(1)
+    plt.ion()
+    t = np.arange(0.0, 3.0, 0.01)
+    s = np.sin(np.pi * t)
+    plt.plot(t, s)
+
+    canvas = FigureCanvasTkAgg(fig, master=f3)
+    plot_widget = canvas.get_tk_widget()
+    plot_widget.grid(row=0, column=0)
 
 
 root.mainloop()

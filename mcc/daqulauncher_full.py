@@ -15,6 +15,10 @@ from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
 import pyodbc
+import matplotlib
+matplotlib.use('TkAgg')
+
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
 
@@ -26,7 +30,10 @@ f1 = Frame(root, width=400, height=80)
 f1.pack(side=TOP)
 
 f2 = Frame(root, width=400, height=100)
-f2.pack(side=BOTTOM)
+f2.pack(side=LEFT)
+
+f3 = Canvas(root, width=400, height=100)
+f3.pack(side=RIGHT)
 
 """"VARIABLES"""
 idvar = StringVar()
@@ -430,9 +437,13 @@ def load_cell_conv(f):
     return f * 12
 
 def Plot(force_data):
+    fig = plt.figure(1)
+    plt.ion()
     plt.plot(force_data)
-    plt.ylabel('some numbers')
-    plt.show()
+
+    canvas = FigureCanvasTkAgg(fig, master=f3)
+    plot_widget = canvas.get_tk_widget()
+    plot_widget.grid(row=0, column=0)
 
 def database_upload(now, ID, Force, Temp):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
