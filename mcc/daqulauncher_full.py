@@ -355,6 +355,9 @@ def fswtl():
                 f = open('count.txt', 'w')
                 f.write(str(counter.get()))
                 f.close()
+                
+                Plot(force_data)
+                ResultsWindow(Force, Temp)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
@@ -396,13 +399,13 @@ counterin.grid(row=2, column=3, pady=10)
 """LABELS"""
 
 idlab = Label(f2, text="DataBox ID")
-idlab.grid(row=0, column=0)
+idlab.grid(row=0, column=0, pady=10)
 chanlab = Label(f2, text="Number of channels")
-chanlab.grid(row=1, column=0)
+chanlab.grid(row=1, column=0, pady=10)
 ratelab = Label(f2, text="Sample rate (Hz)")
-ratelab.grid(row=2, column=0)
+ratelab.grid(row=2, column=0, pady=10)
 totlab = Label(f2, text="Sample duration (ms)")
-totlab.grid(row=3, column=0)
+totlab.grid(row=3, column=0, pady=10)
 counterlab = Label(f1, text="Starting Cycle Count")
 counterlab.grid(row=1, column=3)
 
@@ -475,12 +478,12 @@ def database_upload(now, ID, Force, Temp):
 def ResultsWindow(Force, Temp):
 
     LabelForce = Label(f2, text="Force (kN)")
-    LabelForce.grid(row=5, column=0, pady=10)
+    LabelForce.grid(row=5, column=0)
     LabelTemp = Label(f2, text="Temp (C)")
-    LabelTemp.grid(row=6, column=0, pady=10)
+    LabelTemp.grid(row=6, column=0)
     ResultForce = Label(f2, text=Force)
-    ResultForce.grid(row=5, column=1, pady=10)
+    ResultForce.grid(row=5, column=1)
     ResultTemp = Label(f2, text=Temp)
-    ResultTemp.grid(row=6, column=1, pady=10)
+    ResultTemp.grid(row=6, column=1)
 
 root.mainloop()
