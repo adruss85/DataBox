@@ -35,9 +35,6 @@ f2.pack(side=LEFT)
 f3 = Canvas(root, width=400, height=100)
 f3.pack(side=RIGHT)
 
-f4 = Frame(root, width=400, height=40)
-f4.pack(side=BOTTOM)
-
 """"VARIABLES"""
 idvar = StringVar()
 chanvar = StringVar()
@@ -474,13 +471,13 @@ def database_upload(now, ID, Force, Temp):
 
 def ResultsWindow(Force, Temp):
 
-    LabelForce = Label(f4, text="Force (kN)")
-    LabelForce.grid(row=0, column=0)
-    LabelTemp = Label(f4, text="Temp (C)")
-    LabelTemp.grid(row=1, column=0)
-    ResultForce = Label(f4, text=Force)
-    ResultForce.grid(row=0, column=1)
-    ResultTemp = Label(f4, text=Temp)
-    ResultTemp.grid(row=1, column=1)
+    LabelForce = Label(f2, text="Force (kN)")
+    LabelForce.grid(row=5, column=0)
+    LabelTemp = Label(f2, text="Temp (C)")
+    LabelTemp.grid(row=6, column=0)
+    ResultForce = Label(f2, text=Force)
+    ResultForce.grid(row=5, column=1)
+    ResultTemp = Label(f2, text=Temp)
+    ResultTemp.grid(row=6, column=1)
 
- root.mainloop()
+root.mainloop()
