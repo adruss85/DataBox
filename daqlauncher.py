@@ -11,20 +11,36 @@ matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
-plt.rcParams["figure.figsize"] = (3.2,2.4)
+plt.rcParams["figure.figsize"] = (4,2.4)
 
 """FRAMES"""
 root = Tk()
 root.title("DAQ Launcher")
+root.minsize(800,400)
 
-f1 = Frame(root, width=400, height=80)
-f1.pack(side=TOP)
+root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=1)
+root.grid_rowconfigure(1, weight=5)
 
-f2 = Frame(root, width=400, height=100)
-f2.pack(side=LEFT)
+control = Frame(root, borderwidth=2, relief=RAISED)
+control.grid_columnconfigure(0, weight=1)
+control.grid(row=0, column=0, sticky=N+S+E+W)
 
-f3 = Frame(root, width=400, height=100)
-f3.pack(side=RIGHT)
+inout = Frame(root, bg='yellow')
+inout.grid(row=1, column=0, sticky=N+S+E+W)
+
+inout.grid_columnconfigure(0, weight=1)
+inout.grid_columnconfigure(1, weight=3)
+inout.grid_rowconfigure(0, weight=1)
+
+f1 = Frame(control)
+f1.grid(row=0, column=0)
+
+f2 = Frame(inout, borderwidth=2, relief=RAISED)
+f2.grid(row=0, column=0, sticky=W+E+N+S)
+
+f3 = Frame(inout, bg='blue', relief=RAISED)
+f3.grid(row=0, column=1, sticky=W+E+N+S)
 
 """"VARIABLES"""
 idvar = StringVar()
@@ -86,45 +102,42 @@ counterin.grid(row=2, column=3)
 
 """LAUNCHER BUTTONS"""
 finitebutton = Button(f1, text="Finite Scan", command=fs)
-finitebutton.config(font=("Helvetica", 16))
 finitebutton.grid(row=0, column=0, pady=10)
 
 continuousbutton = Button(f1, text="Continuous Scan", command=fs)
-continuousbutton.config(font=("Helvetica", 16))
 continuousbutton.grid(row=0, column=1, pady=10)
 
 fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fs)
-fcwtbutton.config(font=("Helvetica", 16))
 fcwtbutton.grid(row=0, column=2, pady=10)
 
 fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fs)
-fcwtlbutton.config(font=("Helvetica", 16))
 fcwtlbutton.grid(row=0, column=3, pady=10)
 
 
 """LABELS"""
 
 idlab = Label(f2, text="DataBox ID")
-idlab.config(font=("Helvetica", 16))
 idlab.grid(row=0, column=0)
 chanlab = Label(f2, text="Number of channels")
-chanlab.config(font=("Helvetica", 16))
 chanlab.grid(row=1, column=0)
 ratelab = Label(f2, text="Sample rate (Hz)")
-ratelab.config(font=("Helvetica", 16))
 ratelab.grid(row=2, column=0)
 totlab = Label(f2, text="Sample duration (ms)")
-totlab.config(font=("Helvetica", 16))
 totlab.grid(row=3, column=0)
 counterlab = Label(f1, text="Starting Cycle Count")
-counterlab.config(font=("Helvetica", 16))
 counterlab.grid(row=1, column=3)
 statuslab = Label(f1, text="Scanner Status:")
-statuslab.config(font=("Helvetica", 16))
-statuslab.grid(row=1, column=1)
-status = Label(f1, text="Ready...", fg='red')
-status.config(font=("Helvetica", 16),)
-status.grid(row=2, column=1)
+statuslab.grid(row=1, column=0, columnspan=2)
+status = Label(f1, text="Ready...", fg='red', bg='white', relief=SUNKEN, width=10)
+status.grid(row=2, column=0, columnspan=2)
+LabelForce = Label(f2, text="Force (kN)")
+LabelForce.grid(row=5, column=0)
+LabelTemp = Label(f2, text="Temp (C)")
+LabelTemp.grid(row=6, column=0)
+ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultForce.grid(row=5, column=1)
+ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp.grid(row=6, column=1)
 
 def Window2():
     root2 = Tk()
@@ -137,15 +150,15 @@ def Window2():
 
 def Plot():
     plt.clf()
-    fig = plt.figure(1)
+    fig = plt.figure(111)
     t = np.arange(0.0, 3.0, 0.01)
     s = np.sin(np.pi * t)
     plt.plot(t, s)
 
     canvas = FigureCanvasTkAgg(fig, master=f3)
-    plot_widget = canvas.get_tk_widget()
-    plot_widget.grid(row=0, column=0)
-
+    canvas.draw()
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
 
 root.mainloop()

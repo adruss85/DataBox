@@ -21,20 +21,36 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import sys
 """PLT FIGSIZE SETUP"""
-plt.rcParams["figure.figsize"] = (3.2,2.4)
+plt.rcParams["figure.figsize"] = (4.2,2.4)
 
 """FRAMES"""
 root = Tk()
 root.title("DAQ Launcher")
+root.minsize(800,400)
 
-f1 = Frame(root, width=400, height=80)
-f1.pack(side=TOP)
+root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=1)
+root.grid_rowconfigure(1, weight=5)
 
-f2 = Frame(root, width=400, height=100)
-f2.pack(side=LEFT)
+control = Frame(root, borderwidth=2, relief=RAISED)
+control.grid_columnconfigure(0, weight=1)
+control.grid(row=0, column=0, sticky=N+S+E+W)
 
-f3 = Canvas(root, width=400, height=100)
-f3.pack(side=RIGHT)
+inout = Frame(root, bg='yellow')
+inout.grid(row=1, column=0, sticky=N+S+E+W)
+
+inout.grid_columnconfigure(0, weight=1)
+inout.grid_columnconfigure(1, weight=3)
+inout.grid_rowconfigure(0, weight=1)
+
+f1 = Frame(control)
+f1.grid(row=0, column=0)
+
+f2 = Frame(inout, borderwidth=2, relief=RAISED)
+f2.grid(row=0, column=0, sticky=W+E+N+S)
+
+f3 = Frame(inout, relief=RAISED)
+f3.grid(row=0, column=1, sticky=W+E+N+S)
 
 """"VARIABLES"""
 idvar = StringVar()
@@ -157,6 +173,10 @@ def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
 
 def fswt():
+
+    #Update Status
+    status.config(text="Running...")
+    status.update()
     """
            This function is executed automatically when the module is run directly.
            """
@@ -262,6 +282,10 @@ def fswt():
         print('\n', err)
 
 def fswtl():
+
+    #Update Status
+    status.config(text="Running...")
+    status.update()
 
     i = 1
     while i < 6:
@@ -407,19 +431,27 @@ counterin.grid(row=2, column=3, pady=10)
 """LABELS"""
 
 idlab = Label(f2, text="DataBox ID")
-idlab.grid(row=0, column=0, pady=10)
+idlab.grid(row=0, column=0)
 chanlab = Label(f2, text="Number of channels")
-chanlab.grid(row=1, column=0, pady=10)
+chanlab.grid(row=1, column=0)
 ratelab = Label(f2, text="Sample rate (Hz)")
-ratelab.grid(row=2, column=0, pady=10)
+ratelab.grid(row=2, column=0)
 totlab = Label(f2, text="Sample duration (ms)")
-totlab.grid(row=3, column=0, pady=10)
+totlab.grid(row=3, column=0)
 counterlab = Label(f1, text="Starting Cycle Count")
 counterlab.grid(row=1, column=3)
 statuslab = Label(f1, text="Scanner Status:")
-statuslab.grid(row=1, column=1)
-status = Label(f1, text="Ready...", fg='red')
-status.grid(row=2, column=1)
+statuslab.grid(row=1, column=0, columnspan=2)
+status = Label(f1, text="Ready...", fg='red', bg='white', relief=SUNKEN, width=10)
+status.grid(row=2, column=0, columnspan=2)
+LabelForce = Label(f2, text="Force (kN)")
+LabelForce.grid(row=5, column=0)
+LabelTemp = Label(f2, text="Temp (C)")
+LabelTemp.grid(row=6, column=0)
+ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultForce.grid(row=5, column=1)
+ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp.grid(row=6, column=1)
 
 
 """ALL SUBFUNCTIONS"""
@@ -467,13 +499,13 @@ def Plot(force_data):
     plt.clf()
 
     #draw plot
-    fig = plt.figure(1, figsize=[3.2,2.4])
-    plt.ion()
+    fig = plt.figure(111)
     plt.plot(force_data)
 
     canvas = FigureCanvasTkAgg(fig, master=f3)
-    plot_widget = canvas.get_tk_widget()
-    plot_widget.grid(row=0, column=0)
+    canvas.draw()
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
 def database_upload(now, ID, Force, Temp):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
