@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from Tkinter import*
+import time
 import os
 import subprocess
 import numpy as np
@@ -42,6 +43,8 @@ counter.set(f.read())
 
 """FUNCTIONS TO CALL"""
 def fs():
+    status.config(text="Running...")
+    status.update()
     print idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get(), counter.get(),
     counter.set(counter.get() + 1)
     f = open('count.txt', 'w')
@@ -52,6 +55,11 @@ def fs():
 
     Plot()
     #Window2()
+    time.sleep(2)
+    status.config(text="Finished...")
+    status.update()
+
+
 
 def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
@@ -90,6 +98,7 @@ fcwtbutton.config(font=("Helvetica", 16))
 fcwtbutton.grid(row=0, column=2, pady=10)
 
 fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fs)
+fcwtlbutton.config(font=("Helvetica", 16))
 fcwtlbutton.grid(row=0, column=3, pady=10)
 
 
@@ -108,7 +117,14 @@ totlab = Label(f2, text="Sample duration (ms)")
 totlab.config(font=("Helvetica", 16))
 totlab.grid(row=3, column=0)
 counterlab = Label(f1, text="Starting Cycle Count")
+counterlab.config(font=("Helvetica", 16))
 counterlab.grid(row=1, column=3)
+statuslab = Label(f1, text="Scanner Status:")
+statuslab.config(font=("Helvetica", 16))
+statuslab.grid(row=1, column=1)
+status = Label(f1, text="Ready...", fg='red')
+status.config(font=("Helvetica", 16),)
+status.grid(row=2, column=1)
 
 def Window2():
     root2 = Tk()

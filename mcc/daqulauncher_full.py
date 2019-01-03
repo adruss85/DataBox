@@ -53,6 +53,9 @@ counter.set(f.read())
 
 """FUNCTIONS TO CALL"""
 def fs():
+    #Update Status
+    status.config(text="Running...")
+    status.update()
     """
         This function is executed automatically when the module is run directly.
         """
@@ -138,6 +141,10 @@ def fs():
 
             Plot(force_data)
             ResultsWindow(Force, Temp)
+
+            #Update Status
+            status.config(text="Finished...")
+            status.update()
 
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
@@ -408,6 +415,10 @@ totlab = Label(f2, text="Sample duration (ms)")
 totlab.grid(row=3, column=0, pady=10)
 counterlab = Label(f1, text="Starting Cycle Count")
 counterlab.grid(row=1, column=3)
+statuslab = Label(f1, text="Scanner Status:")
+statuslab.grid(row=1, column=1)
+status = Label(f1, text="Ready...", fg='red')
+status.grid(row=2, column=1)
 
 
 """ALL SUBFUNCTIONS"""

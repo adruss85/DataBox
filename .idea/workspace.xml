@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/daqlauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
+            <state relative-caret-position="476">
+              <caret line="121" selection-start-line="121" selection-end-line="126" selection-end-column="28" />
               <folding>
                 <element signature="e#19#39#0" expanded="true" />
               </folding>
@@ -37,14 +37,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="447" column="17" lean-forward="true" selection-start-line="447" selection-start-column="17" selection-end-line="447" selection-end-column="17" />
+            <state relative-caret-position="255">
+              <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
               <folding>
                 <element signature="e#19#56#0" expanded="true" />
-                <element signature="e#1200#4750#0" />
-                <element signature="e#4767#4817#0" />
-                <element signature="e#4835#8769#0" />
-                <element signature="e#8789#13190#0" />
+                <element signature="e#8854#13348#0" />
               </folding>
             </state>
           </provider>
@@ -76,8 +73,8 @@
         <option value="$PROJECT_DIR$/mcc/finite_scan_master.py" />
         <option value="$PROJECT_DIR$/mcc/finite_scan_multitemp.py" />
         <option value="$PROJECT_DIR$/Plottest.py" />
-        <option value="$PROJECT_DIR$/mcc/daqulauncher_full.py" />
         <option value="$PROJECT_DIR$/daqlauncher.py" />
+        <option value="$PROJECT_DIR$/mcc/daqulauncher_full.py" />
       </list>
     </option>
   </component>
@@ -92,7 +89,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -104,6 +100,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -353,8 +350,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
+        <state relative-caret-position="476">
+          <caret line="121" selection-start-line="121" selection-end-line="126" selection-end-column="28" />
           <folding>
             <element signature="e#19#39#0" expanded="true" />
           </folding>
@@ -363,14 +360,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="447" column="17" lean-forward="true" selection-start-line="447" selection-start-column="17" selection-end-line="447" selection-end-column="17" />
+        <state relative-caret-position="255">
+          <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
           <folding>
             <element signature="e#19#56#0" expanded="true" />
-            <element signature="e#1200#4750#0" />
-            <element signature="e#4767#4817#0" />
-            <element signature="e#4835#8769#0" />
-            <element signature="e#8789#13190#0" />
+            <element signature="e#8854#13348#0" />
           </folding>
         </state>
       </provider>
