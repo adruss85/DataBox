@@ -97,8 +97,7 @@ def fs():
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
                             options)
 
-        try
-
+        try:
             print('Starting scan ... Press Ctrl-C to stop\n')
 
             """read complete output data and place int array"""
@@ -139,7 +138,7 @@ def fs():
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
             print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
-            
+
     except (HatError, ValueError) as err:
         print('\n', err)
 
