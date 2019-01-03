@@ -135,6 +135,9 @@ def fs():
             Plot(force_data)
             ResultsWindow(Force, Temp)
 
+            hat.a_in_scan_stop()
+            hat.a_in_scan_cleanup()
+
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
             print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
