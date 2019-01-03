@@ -119,7 +119,7 @@ def Window2():
     root2.mainloop()
 
 def Plot():
-    fig = plt.figure(1)
+    fig = plt.figure(1, figsize=[3.2,2.4])
     plt.ion()
     t = np.arange(0.0, 3.0, 0.01)
     s = np.sin(np.pi * t)

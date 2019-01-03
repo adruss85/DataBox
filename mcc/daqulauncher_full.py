@@ -97,43 +97,49 @@ def fs():
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
                             options)
 
-        print('Starting scan ... Press Ctrl-C to stop\n')
+        try
 
-        """read complete output data and place int array"""
-        read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
-        """create a blank array"""
-        chan_data = np.zeros([samples_per_channel, num_channels])
-        """create title array"""
-        chan_title = []
-        force_data = read_output.data * 12
-        """iterate through the array per channel to split out every other
-        sample into the correct column"""
+            print('Starting scan ... Press Ctrl-C to stop\n')
 
-        for i in range(num_channels):
-            for j in range(samples_per_channel):
-                if j == 0:
-                    y = str('Channel') + ' ' + str(i)
-                    chan_title.append(str(y))
-            if i < samples_per_channel - num_channels:
-                chan_data[:, i] = force_data[i::num_channels]
+            """read complete output data and place int array"""
+            read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
+            """create a blank array"""
+            chan_data = np.zeros([samples_per_channel, num_channels])
+            """create title array"""
+            chan_title = []
+            force_data = read_output.data * 12
+            """iterate through the array per channel to split out every other
+            sample into the correct column"""
 
-        print('Iterated through loop\n')
+            for i in range(num_channels):
+                for j in range(samples_per_channel):
+                    if j == 0:
+                        y = str('Channel') + ' ' + str(i)
+                        chan_title.append(str(y))
+                if i < samples_per_channel - num_channels:
+                    chan_data[:, i] = force_data[i::num_channels]
 
-        chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-        np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+            print('Iterated through loop\n')
 
-        now = datetime.datetime.now()
-        ID = int(idvar.get())
-        Force = max(read_output.data) * 12
-        Temp = temperature()
+            chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
+            np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
 
-        print(Force)
-        print(Temp)
-        database_upload(now, ID, Force, Temp)
+            now = datetime.datetime.now()
+            ID = int(idvar.get())
+            Force = max(read_output.data) * 12
+            Temp = temperature()
 
-        Plot(force_data)
-        ResultsWindow(Force, Temp)
+            print(Force)
+            print(Temp)
+            database_upload(now, ID, Force, Temp)
 
+            Plot(force_data)
+            ResultsWindow(Force, Temp)
+
+        except KeyboardInterrupt:
+            # Clear the '^C' from the display.
+            print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
+            
     except (HatError, ValueError) as err:
         print('\n', err)
 
@@ -437,7 +443,7 @@ def load_cell_conv(f):
     return f * 12
 
 def Plot(force_data):
-    fig = plt.figure(1)
+    fig = plt.figure(1, figsize=[3.2,2.4])
     plt.ion()
     plt.plot(force_data)
 
