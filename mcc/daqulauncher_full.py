@@ -129,7 +129,7 @@ def fs():
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(read_output.data) * 12)
+            Force = float("{0:.2f}".format(max(read_output.data) * 12))
             Temp = temperature()
 
             hat.a_in_scan_stop()
@@ -241,7 +241,7 @@ def fswt():
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(read_output.data) * 12)
+            Force = float("{0:.2f}".format(max(read_output.data) * 12))
             Temp = temperature()
 
             print(Force)
@@ -348,7 +348,7 @@ def fswtl():
 
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
-                Force = float("{0:.2f}".format(max(read_output.data) * 12)
+                Force = float("{0:.2f}".format(max(read_output.data) * 12))
                 Temp = temperature()
 
                 print(Force)
