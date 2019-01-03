@@ -128,15 +128,17 @@ def fs():
             Force = max(read_output.data) * 12
             Temp = temperature()
 
+            hat.a_in_scan_stop()
+            hat.a_in_scan_cleanup()
+            
             print(Force)
             print(Temp)
             database_upload(now, ID, Force, Temp)
 
             Plot(force_data)
-            ResultsWindow(Force, Temp)
+            #ResultsWindow(Force, Temp)
 
-            hat.a_in_scan_stop()
-            hat.a_in_scan_cleanup()
+
 
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
