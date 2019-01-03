@@ -35,6 +35,9 @@ f2.pack(side=LEFT)
 f3 = Canvas(root, width=400, height=100)
 f3.pack(side=RIGHT)
 
+f4 = Frame(root, width=400, height=40)
+f4.pack(side=BOTTOM)
+
 """"VARIABLES"""
 idvar = StringVar()
 chanvar = StringVar()
@@ -136,9 +139,7 @@ def fs():
             database_upload(now, ID, Force, Temp)
 
             Plot(force_data)
-            #ResultsWindow(Force, Temp)
-
-
+            ResultsWindow(Force, Temp)
 
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
@@ -241,6 +242,9 @@ def fswt():
             print(Force)
             print(Temp)
             database_upload(now, ID, Force, Temp)
+
+            hat.a_in_scan_stop()
+            hat.a_in_scan_cleanup()
 
             Plot(force_data)
             ResultsWindow(Force, Temp)
@@ -346,14 +350,14 @@ def fswtl():
                 print(Temp)
                 database_upload(now, ID, Force, Temp)
 
+                hat.a_in_scan_stop()
+                hat.a_in_scan_cleanup()
+
                 #Counter stepping
                 counter.set(counter.get() + 1)
                 f = open('count.txt', 'w')
                 f.write(str(counter.get()))
                 f.close()
-
-                #Plot(force_data)
-                #ResultsWindow(Force, Temp)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
@@ -469,18 +473,14 @@ def database_upload(now, ID, Force, Temp):
     print('Data Upload Successful')
 
 def ResultsWindow(Force, Temp):
-    root2 = Tk()
-    root2.title("Results")
 
-    LabelForce = Label(root2, text="Force (kN)")
+    LabelForce = Label(f4, text="Force (kN)")
     LabelForce.grid(row=0, column=0)
-    LabelTemp = Label(root2, text="Temp (C)")
+    LabelTemp = Label(f4, text="Temp (C)")
     LabelTemp.grid(row=1, column=0)
-    ResultForce = Label(root2, text=Force)
+    ResultForce = Label(f4, text=Force)
     ResultForce.grid(row=0, column=1)
-    ResultTemp = Label(root2, text=Temp)
+    ResultTemp = Label(f4, text=Temp)
     ResultTemp.grid(row=1, column=1)
 
-    root2.mainloop()
-
-root.mainloop()
+ root.mainloop()
