@@ -177,6 +177,7 @@ def fswt():
     scan_rate = int(ratevar.get())
     options = OptionFlags.EXTTRIGGER
     trigger_mode = TriggerModes.RISING_EDGE
+    timeout = 5.0
 
 
     try:
