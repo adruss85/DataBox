@@ -87,6 +87,9 @@ def cs():
 def fswt():
     os.system('python ./mcc/finite_scan_with_trigger.py')
 
+def Qf():
+    root.destroy()
+
 """INPUTS"""
 idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
 idin.grid(row=1, column=2, padx=20, pady=10)
@@ -116,6 +119,9 @@ fcwtbutton.grid(row=0, column=2, pady=10)
 
 fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fs)
 fcwtlbutton.grid(row=0, column=3, pady=10)
+
+quitbutton = Button(f1, text="Quit", command=Qf)
+quitbutton.grid(row=0, column=4, pady=10)
 
 
 """LABELS"""
