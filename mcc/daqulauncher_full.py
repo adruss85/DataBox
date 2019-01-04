@@ -156,7 +156,7 @@ def fs():
             database_upload(now, ID, Force, Temp)
 
             Plot(force_data)
-            ResultsWindow(Force, Temp)
+            #ResultsWindow(Force, Temp)
 
             #Update Status
             status.config(text="Finished...")
@@ -272,7 +272,7 @@ def fswt():
             hat.a_in_scan_cleanup()
 
             Plot(force_data)
-            ResultsWindow(Force, Temp)
+            #ResultsWindow(Force, Temp)
 
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
@@ -389,7 +389,7 @@ def fswtl():
                 f.close()
                 
                 Plot(force_data)
-                ResultsWindow(Force, Temp)
+                #ResultsWindow(Force, Temp)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
@@ -448,9 +448,9 @@ LabelForce = Label(f2, text="Force (kN)")
 LabelForce.grid(row=5, column=0)
 LabelTemp = Label(f2, text="Temp (C)")
 LabelTemp.grid(row=6, column=0)
-ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultForce = Label(f2, text=Force, fg='red', bg='white', relief=SUNKEN, width=10)
 ResultForce.grid(row=5, column=1)
-ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp = Label(f2, text=Temp, fg='red', bg='white', relief=SUNKEN, width=10)
 ResultTemp.grid(row=6, column=1)
 
 
@@ -508,8 +508,8 @@ def Plot(force_data):
     plt.plot(force_data)
 
     canvas = FigureCanvasTkAgg(fig, master=f3)
-    plot_widget = canvas.get_tk_widget()
-    plot_widget.grid(row=0, column=0)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
 def database_upload(now, ID, Force, Temp):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")

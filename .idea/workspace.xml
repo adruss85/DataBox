@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/daqlauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="153" />
+            <state relative-caret-position="454">
+              <caret line="160" selection-start-line="160" selection-end-line="162" selection-end-column="56" />
               <folding>
                 <element signature="e#19#39#0" expanded="true" />
               </folding>
@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8121">
-              <caret line="507" selection-start-line="507" selection-end-line="507" />
+            <state relative-caret-position="488">
+              <caret line="511" column="56" selection-start-line="511" selection-start-column="56" selection-end-line="511" selection-end-column="56" />
               <folding>
                 <element signature="e#19#56#0" expanded="true" />
               </folding>
@@ -366,8 +366,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="153" />
+        <state relative-caret-position="454">
+          <caret line="160" selection-start-line="160" selection-end-line="162" selection-end-column="56" />
           <folding>
             <element signature="e#19#39#0" expanded="true" />
           </folding>
@@ -376,8 +376,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8121">
-          <caret line="507" selection-start-line="507" selection-end-line="507" />
+        <state relative-caret-position="488">
+          <caret line="511" column="56" selection-start-line="511" selection-start-column="56" selection-end-line="511" selection-end-column="56" />
           <folding>
             <element signature="e#19#56#0" expanded="true" />
           </folding>
