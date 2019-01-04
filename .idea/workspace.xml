@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/daqlauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="160" selection-start-line="160" selection-end-line="162" selection-end-column="56" />
+            <state relative-caret-position="17">
+              <caret line="136" column="36" lean-forward="true" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
               <folding>
                 <element signature="e#19#39#0" expanded="true" />
               </folding>
@@ -25,10 +25,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="511" column="56" selection-start-line="511" selection-start-column="56" selection-end-line="511" selection-end-column="56" />
+            <state relative-caret-position="403">
+              <caret line="527" selection-start-line="527" selection-end-line="530" selection-end-column="23" />
               <folding>
                 <element signature="e#19#56#0" expanded="true" />
+                <element signature="e#5606#9659#0" />
+                <element signature="e#9679#14275#0" />
               </folding>
             </state>
           </provider>
@@ -249,12 +251,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29035753" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29035753" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24918744" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -366,8 +368,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="160" selection-start-line="160" selection-end-line="162" selection-end-column="56" />
+        <state relative-caret-position="17">
+          <caret line="136" column="36" lean-forward="true" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
           <folding>
             <element signature="e#19#39#0" expanded="true" />
           </folding>
@@ -376,10 +378,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="511" column="56" selection-start-line="511" selection-start-column="56" selection-end-line="511" selection-end-column="56" />
+        <state relative-caret-position="403">
+          <caret line="527" selection-start-line="527" selection-end-line="530" selection-end-column="23" />
           <folding>
             <element signature="e#19#56#0" expanded="true" />
+            <element signature="e#5606#9659#0" />
+            <element signature="e#9679#14275#0" />
           </folding>
         </state>
       </provider>
