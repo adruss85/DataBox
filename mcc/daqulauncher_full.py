@@ -495,17 +495,21 @@ def load_cell_conv(f):
     return f * 12
 
 def Plot(force_data):
+    #Clear all widgets from f3
+    for widget in f3.winfo_children():
+        widget.destroy()
+
     #clear plot
     plt.clf()
 
     #draw plot
-    fig = plt.figure(111)
+    fig = plt.figure(1, figsize=[3.2,2.4])
+    plt.ion()
     plt.plot(force_data)
 
     canvas = FigureCanvasTkAgg(fig, master=f3)
-    canvas.draw()
-    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+    plot_widget = canvas.get_tk_widget()
+    plot_widget.grid(row=0, column=0)
 
 def database_upload(now, ID, Force, Temp):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")

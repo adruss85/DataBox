@@ -149,14 +149,16 @@ def Window2():
     root2.mainloop()
 
 def Plot():
-    plt.clf()
+    for widget in f3.winfo_children():
+        widget.destroy()
+
+    plt.cla()
     fig = plt.figure(111)
     t = np.arange(0.0, 3.0, 0.01)
     s = np.sin(np.pi * t)
     plt.plot(t, s)
 
     canvas = FigureCanvasTkAgg(fig, master=f3)
-    canvas.draw()
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
