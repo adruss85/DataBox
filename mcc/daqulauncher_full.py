@@ -363,71 +363,9 @@ def fswtl():
         except (HatError, ValueError) as err:
             print('\n', err)
 
-<<<<<<< HEAD
-=======
 def Quit():
     root.destroy()
 
-"""LAUNCHER BUTTONS"""
-finitebutton = Button(f1, text="Finite Scan", command=fs)
-finitebutton.grid(row=0, column=0, pady=10)
-
-continuousbutton = Button(f1, text="Continuous Scan", command=cs)
-continuousbutton.grid(row=0, column=1, pady=10)
-
-fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
-fcwtbutton.grid(row=0, column=2, pady=10)
-
-fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fswtl)
-fcwtlbutton.grid(row=0, column=3, pady=10)
-
-quitbutton = Button(f1, text="Quit", command=quit)
-quitbutton.grid(row=0, column=4, pady=10)
-
-"""INPUTS"""
-idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
-idin.grid(row=1, column=2, padx=20, pady=10)
-chanin = OptionMenu(f2, chanvar, 1, 2, 3, 4, 5, 6, 7, 8)
-chanin.grid(row=2, column=2, padx=20, pady=10)
-ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
-ratein.grid(row=3, column=2, padx=20, pady=10)
-totin = OptionMenu(f2, totvar, 500, 1000, 2000, 5000, 10000)
-totin.grid(row=4, column=2, padx=20, pady=10)
-trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="TriggerModes.RISING_EDGE")
-trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
-trigin1.grid(row=1, column=2)
-trigin2.grid(row=2, column=2)
-counterin = Entry(f1, textvariable=counter)
-counterin.grid(row=2, column=3)
-
-"""LABELS"""
-
-idlab = Label(f2, text="DataBox ID")
-idlab.grid(row=1, column=1)
-chanlab = Label(f2, text="Number of channels")
-chanlab.grid(row=2, column=1)
-ratelab = Label(f2, text="Sample rate (Hz)")
-ratelab.grid(row=3, column=1)
-totlab = Label(f2, text="Sample duration (ms)")
-totlab.grid(row=4, column=1)
-counterlab = Label(f1, text="Starting Cycle Count")
-counterlab.grid(row=1, column=3)
-statuslab = Label(f1, text="Scanner Status:")
-statuslab.grid(row=1, column=0, columnspan=2)
-status = Label(f1, text="Ready...", fg='red', bg='white', relief=SUNKEN, width=10)
-status.grid(row=2, column=0, columnspan=2)
-LabelForce = Label(f2, text="Force (kN)")
-LabelForce.grid(row=5, column=1)
-LabelTemp = Label(f2, text="Temp (C)")
-LabelTemp.grid(row=6, column=1)
-ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
-ResultForce.grid(row=5, column=2)
-ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
-ResultTemp.grid(row=6, column=2)
-
-
-"""ALL SUBFUNCTIONS"""
->>>>>>> bcbd5262aaa29689ce342c6deea8bce9e7de988e
 def c_to_f(c):
     return c * 9.0 / 5.0 + 32.0
 

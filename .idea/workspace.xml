@@ -10,35 +10,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daqlauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="546" lean-forward="true" selection-start-line="546" selection-end-line="546" />
+            <state relative-caret-position="998">
+              <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
               <folding>
-                <element signature="e#737#4549#0" />
-                <element signature="e#4565#4615#0" />
-                <element signature="e#4634#8907#0" />
-                <element signature="e#8927#13668#0" />
-                <element signature="e#13693#13720#0" />
-                <element signature="e#13746#14045#0" />
-                <element signature="e#14078#14633#0" />
-                <element signature="e#14662#14675#0" />
-                <element signature="e#14703#15090#0" />
-                <element signature="e#15139#15482#0" />
-                <element signature="e#15521#15633#0" />
+                <element signature="e#19#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daqlauncher.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+            <state relative-caret-position="-1569">
+              <caret line="367" lean-forward="true" selection-start-line="367" selection-end-line="367" />
               <folding>
-                <element signature="e#19#39#0" expanded="true" />
+                <element signature="e#733#4550#0" />
+                <element signature="e#4566#4616#0" />
+                <element signature="e#4634#8907#0" />
+                <element signature="e#8926#13668#0" />
+                <element signature="e#13707#13721#0" />
+                <element signature="e#16140#16167#0" />
+                <element signature="e#16192#16491#0" />
+                <element signature="e#16524#17079#0" />
+                <element signature="e#17108#17121#0" />
+                <element signature="e#17149#17536#0" />
+                <element signature="e#17585#17928#0" />
+                <element signature="e#17967#18079#0" />
               </folding>
             </state>
           </provider>
@@ -259,12 +260,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29035753" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29035753" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24918744" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -376,7 +377,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
+        <state relative-caret-position="998">
           <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
           <folding>
             <element signature="e#19#39#0" expanded="true" />
@@ -386,20 +387,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="546" lean-forward="true" selection-start-line="546" selection-end-line="546" />
+        <state relative-caret-position="-1569">
+          <caret line="367" lean-forward="true" selection-start-line="367" selection-end-line="367" />
           <folding>
-            <element signature="e#737#4549#0" />
-            <element signature="e#4565#4615#0" />
+            <element signature="e#733#4550#0" />
+            <element signature="e#4566#4616#0" />
             <element signature="e#4634#8907#0" />
-            <element signature="e#8927#13668#0" />
-            <element signature="e#13693#13720#0" />
-            <element signature="e#13746#14045#0" />
-            <element signature="e#14078#14633#0" />
-            <element signature="e#14662#14675#0" />
-            <element signature="e#14703#15090#0" />
-            <element signature="e#15139#15482#0" />
-            <element signature="e#15521#15633#0" />
+            <element signature="e#8926#13668#0" />
+            <element signature="e#13707#13721#0" />
+            <element signature="e#16140#16167#0" />
+            <element signature="e#16192#16491#0" />
+            <element signature="e#16524#17079#0" />
+            <element signature="e#17108#17121#0" />
+            <element signature="e#17149#17536#0" />
+            <element signature="e#17585#17928#0" />
+            <element signature="e#17967#18079#0" />
           </folding>
         </state>
       </provider>
