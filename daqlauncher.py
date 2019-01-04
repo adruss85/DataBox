@@ -13,6 +13,57 @@ import matplotlib.pyplot as plt
 import sys
 plt.rcParams["figure.figsize"] = (4,2.4)
 
+"""FUNCTIONS TO CALL"""
+def fs():
+    status.config(text="Waiting...")
+    status.update()
+    print idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get(), counter.get(),
+    counter.set(counter.get() + 1)
+    f = open('count.txt', 'w')
+    f.write(str(counter.get()))
+    f.close()
+
+    #os.system('python ./mcc/finite_scan.py')
+
+    Plot()
+    #Window2()
+    time.sleep(5)
+    status.config(text="Finished...")
+    status.update()
+
+
+def cs():
+    subprocess.call('python ./mcc/continuous_scan.py')
+
+def fswt():
+    os.system('python ./mcc/finite_scan_with_trigger.py')
+
+def Qf():
+    root.destroy()
+
+def Window2():
+    root2 = Tk()
+    root2.title("Window 2")
+
+    Label2 = Label(root2,text=ratevar.get(), width=60)
+    Label2.grid(row=0, column=0)
+
+    root2.mainloop()
+
+def Plot():
+    for widget in f3.winfo_children():
+        widget.destroy()
+
+    plt.cla()
+    fig = plt.figure(111)
+    t = np.arange(0.0, 3.0, 0.01)
+    s = np.sin(np.pi * t)
+    plt.plot(t, s)
+
+    canvas = FigureCanvasTkAgg(fig, master=f3)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+
 """FRAMES"""
 root = Tk()
 root.title("DAQ Launcher")
@@ -61,35 +112,6 @@ trigvar.set("TriggerModes.RISING_EDGE")
 f = open("count.txt", "r")
 counter.set(f.read())
 
-"""FUNCTIONS TO CALL"""
-def fs():
-    status.config(text="Waiting...")
-    status.update()
-    print idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get(), counter.get(),
-    counter.set(counter.get() + 1)
-    f = open('count.txt', 'w')
-    f.write(str(counter.get()))
-    f.close()
-
-    #os.system('python ./mcc/finite_scan.py')
-
-    Plot()
-    #Window2()
-    time.sleep(2)
-    status.config(text="Finished...")
-    status.update()
-
-
-
-def cs():
-    subprocess.call('python ./mcc/continuous_scan.py')
-
-def fswt():
-    os.system('python ./mcc/finite_scan_with_trigger.py')
-
-def Qf():
-    root.destroy()
-
 """INPUTS"""
 idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
 idin.grid(row=1, column=2, padx=20, pady=10)
@@ -106,26 +128,7 @@ trigin2.grid(row=2, column=2)
 counterin = Entry(f1, textvariable=counter)
 counterin.grid(row=2, column=3)
 
-
-"""LAUNCHER BUTTONS"""
-finitebutton = Button(f1, text="Finite Scan", command=fs)
-finitebutton.grid(row=0, column=0, pady=10)
-
-continuousbutton = Button(f1, text="Continuous Scan", command=fs)
-continuousbutton.grid(row=0, column=1, pady=10)
-
-fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fs)
-fcwtbutton.grid(row=0, column=2, pady=10)
-
-fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fs)
-fcwtlbutton.grid(row=0, column=3, pady=10)
-
-quitbutton = Button(f1, text="Quit", command=Qf)
-quitbutton.grid(row=0, column=4, pady=10)
-
-
 """LABELS"""
-
 idlab = Label(f2, text="DataBox ID")
 idlab.grid(row=1, column=1)
 chanlab = Label(f2, text="Number of channels")
@@ -149,28 +152,20 @@ ResultForce.grid(row=5, column=2)
 ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
 ResultTemp.grid(row=6, column=2)
 
-def Window2():
-    root2 = Tk()
-    root2.title("Window 2")
+"""LAUNCHER BUTTONS"""
+finitebutton = Button(f1, text="Finite Scan", command=fs)
+finitebutton.grid(row=0, column=0, pady=10)
 
-    Label2 = Label(root2,text=ratevar.get(), width=60)
-    Label2.grid(row=0, column=0)
+continuousbutton = Button(f1, text="Continuous Scan", command=fs)
+continuousbutton.grid(row=0, column=1, pady=10)
 
-    root2.mainloop()
+fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fs)
+fcwtbutton.grid(row=0, column=2, pady=10)
 
-def Plot():
-    for widget in f3.winfo_children():
-        widget.destroy()
+fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fs)
+fcwtlbutton.grid(row=0, column=3, pady=10)
 
-    plt.cla()
-    fig = plt.figure(111)
-    t = np.arange(0.0, 3.0, 0.01)
-    s = np.sin(np.pi * t)
-    plt.plot(t, s)
-
-    canvas = FigureCanvasTkAgg(fig, master=f3)
-    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
-
+quitbutton = Button(f1, text="Quit", command=Qf)
+quitbutton.grid(row=0, column=4, pady=10)
 
 root.mainloop()

@@ -23,57 +23,9 @@ import sys
 """PLT FIGSIZE SETUP"""
 plt.rcParams["figure.figsize"] = (4.2,2.4)
 
-"""FRAMES"""
-root = Tk()
-root.title("DAQ Launcher")
-root.minsize(800,400)
-
-root.grid_columnconfigure(0, weight=1)
-root.grid_rowconfigure(0, weight=1)
-root.grid_rowconfigure(1, weight=5)
-
-control = Frame(root, borderwidth=2, relief=RAISED)
-control.grid_columnconfigure(0, weight=1)
-control.grid(row=0, column=0, sticky=N+S+E+W)
-
-inout = Frame(root)
-inout.grid(row=1, column=0, sticky=N+S+E+W)
-
-inout.grid_columnconfigure(0, weight=1)
-inout.grid_columnconfigure(1, weight=3)
-inout.grid_rowconfigure(0, weight=1)
-
-f1 = Frame(control)
-f1.grid(row=0, column=0)
-
-f2 = Frame(inout, borderwidth=2, relief=RAISED)
-f2.grid(row=0, column=0, sticky=W+E+N+S)
-f2.grid_columnconfigure(0, weight=1)
-f2.grid_columnconfigure(3, weight=1)
-f2.grid_rowconfigure(0, weight=1)
-f2.grid_rowconfigure(8, weight=1)
-
-f3 = Frame(inout, relief=RAISED)
-f3.grid(row=0, column=1, sticky=W+E+N+S)
-
-""""VARIABLES"""
-idvar = StringVar()
-chanvar = StringVar()
-ratevar = StringVar()
-totvar = StringVar()
-trigvar = StringVar()
-counter = IntVar()
-idvar.set(1)
-chanvar.set(1)
-ratevar.set(4000)
-totvar.set(1000)
-trigvar.set("TriggerModes.RISING_EDGE")
-f = open("count.txt", "r")
-counter.set(f.read())
-
-"""FUNCTIONS TO CALL"""
+"""ALL FUNCTIONS"""
 def fs():
-    #Update Status
+    # Update Status
     status.config(text="Running...")
     status.update()
     """
@@ -86,8 +38,8 @@ def fs():
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
-    
-    samples_per_channel = int(totvar.get())/1000*int(ratevar.get())
+
+    samples_per_channel = int(totvar.get()) / 1000 * int(ratevar.get())
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
@@ -126,7 +78,6 @@ def fs():
             status.config(text="Scanning...")
             status.update()
 
-
             """read complete output data and place int array"""
             read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
             """create a blank array"""
@@ -157,7 +108,7 @@ def fs():
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
-            
+
             print(Force)
             print(Temp)
             database_upload(now, ID, Force, Temp)
@@ -165,7 +116,7 @@ def fs():
             Plot(force_data)
             ResultsWindow(Force, Temp)
 
-            #Update Status
+            # Update Status
             status.config(text="Finished...")
             status.update()
 
@@ -180,8 +131,7 @@ def cs():
     subprocess.call('python ./mcc/continuous_scan.py')
 
 def fswt():
-
-    #Update Status
+    # Update Status
     status.config(text="Running...")
     status.update()
     """
@@ -205,7 +155,6 @@ def fswt():
     options = OptionFlags.EXTTRIGGER
     trigger_mode = TriggerModes.RISING_EDGE
     timeout = 5.0
-
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -296,8 +245,7 @@ def fswt():
         print('\n', err)
 
 def fswtl():
-
-    #Update Status
+    # Update Status
     status.config(text="Running...")
     status.update()
 
@@ -323,7 +271,6 @@ def fswtl():
         options = OptionFlags.EXTTRIGGER
         trigger_mode = TriggerModes.RISING_EDGE
         timeout = 5.0
-
 
         try:
             # Select an MCC 118 HAT device to use.
@@ -400,12 +347,12 @@ def fswtl():
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
 
-                #Counter stepping
+                # Counter stepping
                 counter.set(counter.get() + 1)
                 f = open('count.txt', 'w')
                 f.write(str(counter.get()))
                 f.close()
-                
+
                 Plot(force_data)
                 ResultsWindow(Force, Temp)
 
@@ -416,6 +363,8 @@ def fswtl():
         except (HatError, ValueError) as err:
             print('\n', err)
 
+<<<<<<< HEAD
+=======
 def Quit():
     root.destroy()
 
@@ -478,9 +427,9 @@ ResultTemp.grid(row=6, column=2)
 
 
 """ALL SUBFUNCTIONS"""
+>>>>>>> bcbd5262aaa29689ce342c6deea8bce9e7de988e
 def c_to_f(c):
     return c * 9.0 / 5.0 + 32.0
-
 
 def temperature():
     # Raspberry Pi software SPI configuration.
@@ -553,4 +502,110 @@ def ResultsWindow(Force, Temp):
     ResultTemp.config(text=Temp)
     ResultTemp.update()
 
-root.mainloop()
+def GUI():
+    # type: () -> object
+    """FRAMES"""
+    root = Tk()
+    root.title("DAQ Launcher")
+    root.minsize(800,400)
+
+    root.grid_columnconfigure(0, weight=1)
+    root.grid_rowconfigure(0, weight=1)
+    root.grid_rowconfigure(1, weight=5)
+
+    control = Frame(root, borderwidth=2, relief=RAISED)
+    control.grid_columnconfigure(0, weight=1)
+    control.grid(row=0, column=0, sticky=N+S+E+W)
+
+    inout = Frame(root)
+    inout.grid(row=1, column=0, sticky=N+S+E+W)
+
+    inout.grid_columnconfigure(0, weight=1)
+    inout.grid_columnconfigure(1, weight=3)
+    inout.grid_rowconfigure(0, weight=1)
+
+    f1 = Frame(control)
+    f1.grid(row=0, column=0)
+
+    f2 = Frame(inout, borderwidth=2, relief=RAISED)
+    f2.grid(row=0, column=0, sticky=W+E+N+S)
+    f2.grid_columnconfigure(0, weight=1)
+    f2.grid_columnconfigure(3, weight=1)
+    f2.grid_rowconfigure(0, weight=1)
+    f2.grid_rowconfigure(8, weight=1)
+
+    f3 = Frame(inout, relief=RAISED)
+    f3.grid(row=0, column=1, sticky=W+E+N+S)
+
+    """"VARIABLES"""
+    idvar = StringVar()
+    chanvar = StringVar()
+    ratevar = StringVar()
+    totvar = StringVar()
+    trigvar = StringVar()
+    counter = IntVar()
+    idvar.set(1)
+    chanvar.set(1)
+    ratevar.set(4000)
+    totvar.set(1000)
+    trigvar.set("TriggerModes.RISING_EDGE")
+    f = open("count.txt", "r")
+    counter.set(f.read())
+
+    """INPUTS"""
+    idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
+    idin.grid(row=1, column=2, padx=20, pady=10)
+    chanin = OptionMenu(f2, chanvar, 1, 2, 3, 4, 5, 6, 7, 8)
+    chanin.grid(row=2, column=2, padx=20, pady=10)
+    ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
+    ratein.grid(row=3, column=2, padx=20, pady=10)
+    totin = OptionMenu(f2, totvar, 500, 1000, 2000, 5000, 10000)
+    totin.grid(row=4, column=2, padx=20, pady=10)
+    trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="TriggerModes.RISING_EDGE")
+    trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
+    trigin1.grid(row=1, column=2)
+    trigin2.grid(row=2, column=2)
+    counterin = Entry(f1, textvariable=counter)
+    counterin.grid(row=2, column=3)
+
+    """LABELS"""
+    idlab = Label(f2, text="DataBox ID")
+    idlab.grid(row=1, column=1)
+    chanlab = Label(f2, text="Number of channels")
+    chanlab.grid(row=2, column=1)
+    ratelab = Label(f2, text="Sample rate (Hz)")
+    ratelab.grid(row=3, column=1)
+    totlab = Label(f2, text="Sample duration (ms)")
+    totlab.grid(row=4, column=1)
+    counterlab = Label(f1, text="Starting Cycle Count")
+    counterlab.grid(row=1, column=3)
+    statuslab = Label(f1, text="Scanner Status:")
+    statuslab.grid(row=1, column=0, columnspan=2)
+    status = Label(f1, text="Ready...", fg='red', bg='white', relief=SUNKEN, width=10)
+    status.grid(row=2, column=0, columnspan=2)
+    LabelForce = Label(f2, text="Force (kN)")
+    LabelForce.grid(row=5, column=1)
+    LabelTemp = Label(f2, text="Temp (C)")
+    LabelTemp.grid(row=6, column=1)
+    ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
+    ResultForce.grid(row=5, column=2)
+    ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+    ResultTemp.grid(row=6, column=2)
+
+    """LAUNCHER BUTTONS"""
+    finitebutton = Button(f1, text="Finite Scan", command=fs)
+    finitebutton.grid(row=0, column=0, pady=10)
+
+    continuousbutton = Button(f1, text="Continuous Scan", command=cs)
+    continuousbutton.grid(row=0, column=1, pady=10)
+
+    fcwtbutton = Button(f1, text="Finite Scan w/Trigger", command=fswt)
+    fcwtbutton.grid(row=0, column=2, pady=10)
+
+    fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fswtl)
+    fcwtlbutton.grid(row=0, column=3, pady=10)
+
+    root.mainloop()
+
+if __name__ == '__main__':
+    GUI()
