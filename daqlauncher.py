@@ -63,7 +63,7 @@ counter.set(f.read())
 
 """FUNCTIONS TO CALL"""
 def fs():
-    status.config(text="Running...")
+    status.config(text="Waiting...")
     status.update()
     print idvar.get(), chanvar.get(), ratevar.get(), totvar.get(), trigvar.get(), counter.get(),
     counter.set(counter.get() + 1)

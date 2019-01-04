@@ -123,6 +123,9 @@ def fs():
 
         try:
             print('Starting scan ... Press Ctrl-C to stop\n')
+            status.config(text="Scanning...")
+            status.update()
+
 
             """read complete output data and place int array"""
             read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
@@ -236,9 +239,13 @@ def fswt():
         try:
             # wait for the external trigger to occur
             print('\nWaiting for trigger ... hit Ctrl-C to cancel the trigger')
+            status.config(text="Waiting...")
+            status.update()
             wait_for_trigger(hat)
 
             print('\nStarting scan ... Press Ctrl-C to stop\n')
+            status.config(text="Triggered")
+            status.update()
 
             """read complete output data and place int array"""
             read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
@@ -277,6 +284,9 @@ def fswt():
 
             Plot(force_data)
             ResultsWindow(Force, Temp)
+
+            status.config(text="Finished...")
+            status.update()
 
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
@@ -347,9 +357,13 @@ def fswtl():
             try:
                 # wait for the external trigger to occur
                 print('\nWaiting for trigger ... hit Ctrl-C to cancel the trigger')
+                status.config(text="Waiting...")
+                status.update()
                 wait_for_trigger(hat)
 
                 print('\nStarting scan ... Press Ctrl-C to stop\n')
+                status.config(text="Triggered")
+                status.update()
 
                 """read complete output data and place int array"""
                 read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
