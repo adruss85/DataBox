@@ -416,6 +416,8 @@ def fswtl():
         except (HatError, ValueError) as err:
             print('\n', err)
 
+def Quit():
+    root.destroy()
 
 """LAUNCHER BUTTONS"""
 finitebutton = Button(f1, text="Finite Scan", command=fs)
@@ -429,6 +431,9 @@ fcwtbutton.grid(row=0, column=2, pady=10)
 
 fcwtlbutton = Button(f1, text="Looped Triggered Scan", command=fswtl)
 fcwtlbutton.grid(row=0, column=3, pady=10)
+
+quitbutton = Button(f1, text="Quit", command=quit)
+quitbutton.grid(row=0, column=4, pady=10)
 
 """INPUTS"""
 idin = OptionMenu(f2, idvar, 1, 2, 3, 4, 5, 6, 7, 8)
