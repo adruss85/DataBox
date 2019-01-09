@@ -36,7 +36,7 @@ def main():
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    channels = [0, 1, 2, 3]
+    channels = [0]
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
@@ -115,7 +115,6 @@ def read_and_display_data(hat, num_channels):
     """
     total_samples_read = 0
     read_request_size = READ_ALL_AVAILABLE
-    read_result = hat.a_in_scan_read(read_request_size, timeout)
 
     # When doing a continuous scan, the timeout value will be ignored in the
     # call to a_in_scan_read because we will be requesting that all available
@@ -127,7 +126,8 @@ def read_and_display_data(hat, num_channels):
     # to -1 (READ_ALL_AVAILABLE), this function returns immediately with
     # whatever samples are available (up to user_buffer_size) and the timeout
     # parameter is ignored.
-    if read_result < 2:
+    while True:
+        read_result = hat.a_in_scan_read(read_request_size, timeout)
 
         # Check for an overrun error
         if read_result.hardware_overrun:
@@ -146,14 +146,16 @@ def read_and_display_data(hat, num_channels):
 
         if samples_read_per_channel > 0:
             index = samples_read_per_channel * num_channels - num_channels
-
-            for i in range(num_channels):
-                print('{:10.5f}'.format(read_result.data[index+i]), 'V ',
+            sausage = read_result.data[index] < 2
+            if sausage == False:
+                print("Waiting for trigger")
+            else:
+                print("Triggered")
+                for i in range(num_channels):
+                    print('{:10.5f}'.format(read_result.data[index+i]), 'V ',
                       end='')
-            stdout.flush()
-
-    else:
-        print("Trigger Detected")
+                stdout.flush()
+       
 
             sleep(0.1)
 

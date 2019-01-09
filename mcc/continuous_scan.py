@@ -115,7 +115,6 @@ def read_and_display_data(hat, num_channels):
     """
     total_samples_read = 0
     read_request_size = READ_ALL_AVAILABLE
-    read_result = hat.a_in_scan_read(read_request_size, timeout)
 
     # When doing a continuous scan, the timeout value will be ignored in the
     # call to a_in_scan_read because we will be requesting that all available
@@ -127,7 +126,8 @@ def read_and_display_data(hat, num_channels):
     # to -1 (READ_ALL_AVAILABLE), this function returns immediately with
     # whatever samples are available (up to user_buffer_size) and the timeout
     # parameter is ignored.
-    if read_result < 2:
+    while True:
+        read_result = hat.a_in_scan_read(read_request_size, timeout)
 
         # Check for an overrun error
         if read_result.hardware_overrun:
@@ -151,9 +151,6 @@ def read_and_display_data(hat, num_channels):
                 print('{:10.5f}'.format(read_result.data[index+i]), 'V ',
                       end='')
             stdout.flush()
-
-    else:
-        print("Trigger Detected")
 
             sleep(0.1)
 
