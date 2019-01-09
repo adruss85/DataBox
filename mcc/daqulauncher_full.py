@@ -140,6 +140,7 @@ def cs():
     options = OptionFlags.CONTINUOUS
 
     scan_rate = int(ratevar.get())
+    tot_samps = int(totvar.get()) / 1000 * int(ratevar.get())
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -209,19 +210,19 @@ def cs():
             samples_read_per_channel = int(len(read_result.data) / num_channels)
             total_samples_read += samples_read_per_channel
             
-            if samples_read_per_channel > 0:
+            while samples_read_per_channel > 0:
                 index = samples_read_per_channel * num_channels - num_channels
-                sausage = read_result.data[index] < 2
+                sausage = read_result.data[index] > 2
                 if sausage == False:
                     print("Waiting for trigger")
                 else:
                     print("Triggered")
-                    for i in range(num_channels):
+                    for i in range(tot_samps):
                         print('{:10.5f}'.format(read_result.data[index + i]), 'V ',
                               end='')
                     stdout.flush()
 
-                sleep(0.1)
+                sleep(0.001)
 
     except (HatError, ValueError) as err:
         print('\n', err)
