@@ -25,19 +25,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="385" column="70" lean-forward="true" selection-start-line="385" selection-start-column="70" selection-end-line="385" selection-end-column="70" />
+            <state relative-caret-position="333">
+              <caret line="226" column="26" lean-forward="true" selection-start-line="226" selection-start-column="26" selection-end-line="226" selection-end-column="26" />
               <folding>
                 <element signature="e#733#4550#0" />
                 <element signature="e#810#906#1" />
                 <element signature="e#912#986#0" />
-                <element signature="e#1621#4482#0" />
                 <element signature="e#3111#3222#1" />
                 <element signature="e#3282#3582#0" />
                 <element signature="e#3339#3457#0" />
                 <element signature="e#3374#3457#0" />
                 <element signature="e#4387#4482#0" />
-                <element signature="e#4566#4616#0" />
                 <element signature="e#4634#8907#0" />
                 <element signature="e#4711#4813#1" />
                 <element signature="e#4819#4893#0" />
@@ -61,6 +59,24 @@
                 <element signature="e#13493#13592#0" />
                 <element signature="e#13686#13700#0" />
                 <element signature="e#13721#13748#0" />
+                <element signature="e#13773#14003#0" />
+                <element signature="e#14036#14591#0" />
+                <element signature="e#14620#14633#0" />
+                <element signature="e#14661#15048#0" />
+                <element signature="e#15097#15440#0" />
+                <element signature="e#15479#15591#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="159" column="22" lean-forward="true" selection-start-line="115" selection-end-line="159" selection-end-column="22" />
+              <folding>
+                <element signature="e#48#489#1" />
               </folding>
             </state>
           </provider>
@@ -70,14 +86,9 @@
         <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
-              <caret line="155" column="33" lean-forward="true" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
+              <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_triggertest.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -124,7 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,6 +151,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,11 +307,11 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49947312" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.29035753" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24918744" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -308,7 +319,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -421,31 +432,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="155" column="33" lean-forward="true" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_triggertest.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="159" column="22" lean-forward="true" selection-start-line="115" selection-end-line="159" selection-end-column="22" />
+          <folding>
+            <element signature="e#48#489#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="385" column="70" lean-forward="true" selection-start-line="385" selection-start-column="70" selection-end-line="385" selection-end-column="70" />
+        <state relative-caret-position="333">
+          <caret line="226" column="26" lean-forward="true" selection-start-line="226" selection-start-column="26" selection-end-line="226" selection-end-column="26" />
           <folding>
             <element signature="e#733#4550#0" />
             <element signature="e#810#906#1" />
             <element signature="e#912#986#0" />
-            <element signature="e#1621#4482#0" />
             <element signature="e#3111#3222#1" />
             <element signature="e#3282#3582#0" />
             <element signature="e#3339#3457#0" />
             <element signature="e#3374#3457#0" />
             <element signature="e#4387#4482#0" />
-            <element signature="e#4566#4616#0" />
             <element signature="e#4634#8907#0" />
             <element signature="e#4711#4813#1" />
             <element signature="e#4819#4893#0" />
@@ -469,6 +488,12 @@
             <element signature="e#13493#13592#0" />
             <element signature="e#13686#13700#0" />
             <element signature="e#13721#13748#0" />
+            <element signature="e#13773#14003#0" />
+            <element signature="e#14036#14591#0" />
+            <element signature="e#14620#14633#0" />
+            <element signature="e#14661#15048#0" />
+            <element signature="e#15097#15440#0" />
+            <element signature="e#15479#15591#0" />
           </folding>
         </state>
       </provider>
