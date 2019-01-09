@@ -189,7 +189,7 @@ def cs():
         # call to a_in_scan_read because we will be requesting that all available
         # samples (up to the default buffer size) be returned.
         timeout = 5.0
-
+        
         # Read all of the available samples (up to the size of the read_buffer which
         # is specified by the user_buffer_size).  Since the read_request_size is set
         # to -1 (READ_ALL_AVAILABLE), this function returns immediately with
@@ -208,9 +208,8 @@ def cs():
 
             samples_read_per_channel = int(len(read_result.data) / num_channels)
             total_samples_read += samples_read_per_channel
-
-
-            if samples_read_per_channel < 10000:
+            
+            if samples_read_per_channel > 0:
                 index = samples_read_per_channel * num_channels - num_channels
                 sausage = read_result.data[index] < 2
                 if sausage == False:
