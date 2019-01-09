@@ -376,8 +376,9 @@ def temperature():
     DO = 18
     sensor = MAX31855.MAX31855(CLK, CS, DO)
     temp = sensor.readTempC()
-    internal = sensor.readInternalC()
-    # print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
+    if np.isnan(temp) == True:
+        temp = None
+    else
     return temp
 
 def wait_for_trigger(hat):
