@@ -76,7 +76,9 @@ try:
         samples_read_per_channel = int(len(read_result.data) / num_channels)
         total_samples_read += samples_read_per_channel
         index = total_samples_read
-        np.savetxt('softtrigger.txt', index)
+        f = open("softtrig.txt", "w")
+        f.write(index)
+        f.close()
 
 
 
