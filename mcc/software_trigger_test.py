@@ -31,6 +31,8 @@ options = OptionFlags.CONTINUOUS
 
 scan_rate = 1000
 
+tot_samp = 10
+
 try:
     # Select an MCC 118 HAT device to use.
     address = select_hat_device(HatIDs.MCC_118)
@@ -71,18 +73,21 @@ try:
     timeout = 5.0
 
     while True:
-        read_result = hat.a_in_scan_read(read_request_size, timeout)
-
+        read_result = hat.a_in_scan_read_numpy(read_request_size, timeout)
+        chan_data = np.zeros([samples_per_channel, num_channels])
         samples_read_per_channel = int(len(read_result.data) / num_channels)
         total_samples_read += samples_read_per_channel
-        index = total_samples_read
-        f = open("softtrig.txt", "w")
-        f.write(index)
-        f.close()
-
-
-
-    # When doing a continuous scan, the timeout value will be ignored in the
+        
+        if samples_read_per_channel > 0:
+            index = samples_read_per_channel * num_channels - num_channels
+            test = read_result.data[index] > 3
+            if test == False:
+                print("Not Triggered")
+            else:
+                print(read_result.data[0:index])
+                break
+        
+        # When doing a continuous scan, the timeout value will be ignored in the
     # call to a_in_scan_read because we will be requesting that all available
     # samples (up to the default buffer size) be returned.
 
