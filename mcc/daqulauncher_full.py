@@ -478,6 +478,8 @@ def temperature():
     if np.isnan(temp) == True:
         temp = None
     else:
+        pass
+
     return temp
 
 def wait_for_trigger(hat):

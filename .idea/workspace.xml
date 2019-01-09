@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="226" column="26" lean-forward="true" selection-start-line="226" selection-start-column="26" selection-end-line="226" selection-end-column="26" />
+            <state relative-caret-position="437">
+              <caret line="478" column="19" lean-forward="true" selection-start-line="478" selection-start-column="19" selection-end-line="478" selection-end-column="19" />
               <folding>
                 <element signature="e#733#4550#0" />
                 <element signature="e#810#906#1" />
@@ -59,7 +59,6 @@
                 <element signature="e#13493#13592#0" />
                 <element signature="e#13686#13700#0" />
                 <element signature="e#13721#13748#0" />
-                <element signature="e#13773#14003#0" />
                 <element signature="e#14036#14591#0" />
                 <element signature="e#14620#14633#0" />
                 <element signature="e#14661#15048#0" />
@@ -454,8 +453,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="226" column="26" lean-forward="true" selection-start-line="226" selection-start-column="26" selection-end-line="226" selection-end-column="26" />
+        <state relative-caret-position="437">
+          <caret line="478" column="19" lean-forward="true" selection-start-line="478" selection-start-column="19" selection-end-line="478" selection-end-column="19" />
           <folding>
             <element signature="e#733#4550#0" />
             <element signature="e#810#906#1" />
@@ -488,7 +487,6 @@
             <element signature="e#13493#13592#0" />
             <element signature="e#13686#13700#0" />
             <element signature="e#13721#13748#0" />
-            <element signature="e#13773#14003#0" />
             <element signature="e#14036#14591#0" />
             <element signature="e#14620#14633#0" />
             <element signature="e#14661#15048#0" />
