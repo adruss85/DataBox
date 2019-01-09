@@ -130,7 +130,8 @@ def fs():
 def cs():
     READ_ALL_AVAILABLE = -1
 
-    channels = [0]
+    no_of_channels = int(chanvar.get())  # Creates the list of channels.
+    channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
@@ -138,7 +139,7 @@ def cs():
 
     options = OptionFlags.CONTINUOUS
 
-    scan_rate = 1000.0
+    scan_rate = int(ratevar.get())
 
     try:
         # Select an MCC 118 HAT device to use.
@@ -208,11 +209,8 @@ def cs():
             samples_read_per_channel = int(len(read_result.data) / num_channels)
             total_samples_read += samples_read_per_channel
 
-            # Display the last sample for each channel.
-            print('\r{:12}'.format(samples_read_per_channel),
-                  ' {:12} '.format(total_samples_read), end='')
 
-            if samples_read_per_channel > 0:
+            if samples_read_per_channel < 10000:
                 index = samples_read_per_channel * num_channels - num_channels
                 sausage = read_result.data[index] < 2
                 if sausage == False:
