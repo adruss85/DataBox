@@ -25,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
+            <state relative-caret-position="-1139">
               <caret line="2" selection-start-line="2" selection-end-line="21" selection-end-column="10" />
               <folding>
                 <element signature="e#19#56#0" expanded="true" />
@@ -72,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/software_trigger_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="74" column="27" lean-forward="true" selection-start-line="74" selection-start-column="27" selection-end-line="74" selection-end-column="27" />
+            <state relative-caret-position="216">
+              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
+            <state relative-caret-position="214">
+              <caret line="40" column="32" lean-forward="true" selection-start-line="38" selection-start-column="3" selection-end-line="40" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -435,13 +435,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_triggertest.py" />
-    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="537">
@@ -464,7 +457,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
+        <state relative-caret-position="-1139">
           <caret line="2" selection-start-line="2" selection-end-line="21" selection-end-column="10" />
           <folding>
             <element signature="e#19#56#0" expanded="true" />
@@ -507,10 +500,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="40" column="32" lean-forward="true" selection-start-line="38" selection-start-column="3" selection-end-line="40" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mcc/software_trigger_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="74" column="27" lean-forward="true" selection-start-line="74" selection-start-column="27" selection-end-line="74" selection-end-column="27" />
+        <state relative-caret-position="216">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

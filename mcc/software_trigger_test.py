@@ -21,8 +21,7 @@ import sys
 
 READ_ALL_AVAILABLE = -1
 
-no_of_channels = 1  # Creates the list of channels.
-channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
+channels = [0]
 channel_mask = chan_list_to_mask(channels)
 num_channels = len(channels)
 
