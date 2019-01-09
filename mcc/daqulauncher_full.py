@@ -378,7 +378,7 @@ def temperature():
     temp = sensor.readTempC()
     if np.isnan(temp) == True:
         temp = None
-    else
+    else:
     return temp
 
 def wait_for_trigger(hat):
