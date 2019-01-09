@@ -69,9 +69,18 @@ try:
     total_samples_read = 0
     read_request_size = READ_ALL_AVAILABLE
     timeout = 5.0
-    read_result = hat.a_in_scan_read(read_request_size, timeout)
 
-    print(read_result.data)
+    while True:
+        read_result = hat.a_in_scan_read(read_request_size, timeout)
+
+        samples_read_per_channel = int(len(read_result.data) / num_channels)
+        total_samples_read += samples_read_per_channel
+        index = total_samples_read
+        sausage = read_result.data[index]
+
+        print(sausage)
+
+
 
     # When doing a continuous scan, the timeout value will be ignored in the
     # call to a_in_scan_read because we will be requesting that all available
