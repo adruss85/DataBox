@@ -10,102 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daqlauncher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="163" selection-start-line="163" selection-end-line="163" />
-              <folding>
-                <element signature="e#19#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="101" column="12" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="71" />
-              <folding>
-                <element signature="e#19#56#0" expanded="true" />
-                <element signature="e#810#906#1" />
-                <element signature="e#3111#3222#1" />
-                <element signature="e#3282#3582#0" />
-                <element signature="e#3339#3457#0" />
-                <element signature="e#3374#3457#0" />
-                <element signature="e#4387#4482#0" />
-                <element signature="e#4634#8907#0" />
-                <element signature="e#4711#4813#1" />
-                <element signature="e#4819#4893#0" />
-                <element signature="e#5574#8839#0" />
-                <element signature="e#6752#8696#0" />
-                <element signature="e#7496#7607#1" />
-                <element signature="e#7667#7967#0" />
-                <element signature="e#7724#7842#0" />
-                <element signature="e#7759#7842#0" />
-                <element signature="e#8744#8839#0" />
-                <element signature="e#8926#13668#0" />
-                <element signature="e#9035#13668#0" />
-                <element signature="e#9035#9125#1" />
-                <element signature="e#9135#9209#0" />
-                <element signature="e#9954#13592#0" />
-                <element signature="e#11224#13437#0" />
-                <element signature="e#12028#12143#1" />
-                <element signature="e#12211#12531#0" />
-                <element signature="e#12272#12398#0" />
-                <element signature="e#12311#12398#0" />
-                <element signature="e#13493#13592#0" />
-                <element signature="e#13686#13700#0" />
-                <element signature="e#13721#13748#0" />
-                <element signature="e#14036#14591#0" />
-                <element signature="e#14620#14633#0" />
-                <element signature="e#14661#15048#0" />
-                <element signature="e#15097#15440#0" />
-                <element signature="e#15479#15591#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mcc/software_trigger_test.py">
+        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="75" column="76" lean-forward="true" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/thermo/simpletest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="9" lean-forward="true" selection-start-line="32" selection-end-line="34" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="159" column="22" lean-forward="true" selection-start-line="115" selection-end-line="159" selection-end-column="22" />
-              <folding>
-                <element signature="e#48#489#1" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-806">
-              <caret line="40" column="32" lean-forward="true" selection-start-line="38" selection-start-column="3" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -141,6 +50,7 @@
         <option value="$PROJECT_DIR$/mcc/continuous_scan.py" />
         <option value="$PROJECT_DIR$/mcc/daqulauncher_full.py" />
         <option value="$PROJECT_DIR$/mcc/software_trigger_test.py" />
+        <option value="$PROJECT_DIR$/mcc/daqulauncher_demo.py" />
       </list>
     </option>
   </component>
@@ -350,25 +260,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49947312" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29035753" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24918744" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -448,26 +339,27 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_triggertest.py" />
-    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py">
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py" />
+    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="159" column="22" lean-forward="true" selection-start-line="115" selection-end-line="159" selection-end-column="22" />
-          <folding>
-            <element signature="e#48#489#1" />
-          </folding>
+        <state relative-caret-position="595">
+          <caret line="40" column="32" selection-start-line="38" selection-start-column="3" selection-end-line="40" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan.py">
+    <entry file="file://$PROJECT_DIR$/mcc/software_trigger_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-806">
-          <caret line="40" column="32" lean-forward="true" selection-start-line="38" selection-start-column="3" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="756">
+          <caret line="77" column="76" selection-start-line="77" selection-start-column="76" selection-end-line="77" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
+        <state relative-caret-position="654">
           <caret line="163" selection-start-line="163" selection-end-line="163" />
           <folding>
             <element signature="e#19#39#0" expanded="true" />
@@ -475,64 +367,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_full.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="101" column="12" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="71" />
-          <folding>
-            <element signature="e#19#56#0" expanded="true" />
-            <element signature="e#810#906#1" />
-            <element signature="e#3111#3222#1" />
-            <element signature="e#3282#3582#0" />
-            <element signature="e#3339#3457#0" />
-            <element signature="e#3374#3457#0" />
-            <element signature="e#4387#4482#0" />
-            <element signature="e#4634#8907#0" />
-            <element signature="e#4711#4813#1" />
-            <element signature="e#4819#4893#0" />
-            <element signature="e#5574#8839#0" />
-            <element signature="e#6752#8696#0" />
-            <element signature="e#7496#7607#1" />
-            <element signature="e#7667#7967#0" />
-            <element signature="e#7724#7842#0" />
-            <element signature="e#7759#7842#0" />
-            <element signature="e#8744#8839#0" />
-            <element signature="e#8926#13668#0" />
-            <element signature="e#9035#13668#0" />
-            <element signature="e#9035#9125#1" />
-            <element signature="e#9135#9209#0" />
-            <element signature="e#9954#13592#0" />
-            <element signature="e#11224#13437#0" />
-            <element signature="e#12028#12143#1" />
-            <element signature="e#12211#12531#0" />
-            <element signature="e#12272#12398#0" />
-            <element signature="e#12311#12398#0" />
-            <element signature="e#13493#13592#0" />
-            <element signature="e#13686#13700#0" />
-            <element signature="e#13721#13748#0" />
-            <element signature="e#14036#14591#0" />
-            <element signature="e#14620#14633#0" />
-            <element signature="e#14661#15048#0" />
-            <element signature="e#15097#15440#0" />
-            <element signature="e#15479#15591#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thermo/simpletest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="32" selection-end-line="34" selection-end-column="9" />
+          <caret line="34" column="9" selection-start-line="32" selection-end-line="34" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/software_trigger_test.py">
+    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="75" column="76" lean-forward="true" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+        <state relative-caret-position="671">
+          <caret line="159" column="22" selection-start-line="115" selection-end-line="159" selection-end-column="22" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#48#489#1" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
         </state>
       </provider>
     </entry>

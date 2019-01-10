@@ -39,7 +39,7 @@ def fs():
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
-    samples_per_channel = int(totvar.get()) / 1000 * int(ratevar.get())
+    samples_per_channel = int(float(totvar.get()) / 1000 * int(ratevar.get()))
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
@@ -240,8 +240,9 @@ def fswt():
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
-    print(float(totvar.get())/1000)
-    samples_per_channel = int(totvar.get()) / 1000 * int(ratevar.get())
+
+    samples_per_channel = int(float(totvar.get()) / 1000 * int(ratevar.get()))
+    
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
@@ -357,8 +358,8 @@ def fswtl():
         channel_mask = chan_list_to_mask(channels)
         num_channels = len(channels)
 
-        samples_per_channel = int(totvar.get()) / 1000 * int(ratevar.get())
-        print(samples_per_channel)
+        samples_per_channel = int(float(totvar.get()) / 1000 * int(ratevar.get()))
+
         if (num_channels % 2) == 0:
             samples = int(samples_per_channel * num_channels)
         else:
