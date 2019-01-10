@@ -10,13 +10,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+            <state relative-caret-position="552">
+              <caret line="640" column="64" lean-forward="true" selection-start-line="640" selection-start-column="64" selection-end-line="640" selection-end-column="64" />
+              <folding>
+                <element signature="e#776#837#0" />
+                <element signature="e#733#4558#0" />
+                <element signature="e#810#906#1" />
+                <element signature="e#912#986#0" />
+                <element signature="e#1628#4490#0" />
+                <element signature="e#2608#4328#0" />
+                <element signature="e#3111#3222#1" />
+                <element signature="e#3282#3582#0" />
+                <element signature="e#3339#3457#0" />
+                <element signature="e#3374#3457#0" />
+                <element signature="e#4395#4490#0" />
+                <element signature="e#4574#8458#0" />
+                <element signature="e#4946#8390#0" />
+                <element signature="e#5750#5756#0" />
+                <element signature="e#6704#6776#0" />
+                <element signature="e#6961#7037#0" />
+                <element signature="e#7346#8390#0" />
+                <element signature="e#7510#7563#0" />
+                <element signature="e#7625#7676#0" />
+                <element signature="e#7892#8390#0" />
+                <element signature="e#8137#8362#0" />
+                <element signature="e#8230#8327#0" />
+                <element signature="e#8476#12761#0" />
+                <element signature="e#8553#8655#1" />
+                <element signature="e#8661#8735#0" />
+                <element signature="e#9428#12693#0" />
+                <element signature="e#10606#12550#0" />
+                <element signature="e#11350#11461#1" />
+                <element signature="e#11521#11821#0" />
+                <element signature="e#11578#11696#0" />
+                <element signature="e#11613#11696#0" />
+                <element signature="e#12598#12693#0" />
+                <element signature="e#12780#17530#0" />
+                <element signature="e#12889#17530#0" />
+                <element signature="e#12889#12979#1" />
+                <element signature="e#12989#13063#0" />
+                <element signature="e#13816#17454#0" />
+                <element signature="e#15086#17299#0" />
+                <element signature="e#15890#16005#1" />
+                <element signature="e#16073#16393#0" />
+                <element signature="e#16134#16260#0" />
+                <element signature="e#16173#16260#0" />
+                <element signature="e#17386#17485#0" />
+                <element signature="e#17579#17593#0" />
+                <element signature="e#17614#17641#0" />
+                <element signature="e#17666#17910#0" />
+                <element signature="e#17943#18498#0" />
+                <element signature="e#17943#18227#1" />
+                <element signature="e#18391#18498#0" />
+                <element signature="e#18527#18540#0" />
+                <element signature="e#18568#18955#0" />
+                <element signature="e#19004#19347#0" />
+                <element signature="e#19386#19498#0" />
+              </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_mp.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -386,10 +446,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+        <state relative-caret-position="552">
+          <caret line="640" column="64" lean-forward="true" selection-start-line="640" selection-start-column="64" selection-end-line="640" selection-end-column="64" />
+          <folding>
+            <element signature="e#776#837#0" />
+            <element signature="e#733#4558#0" />
+            <element signature="e#810#906#1" />
+            <element signature="e#912#986#0" />
+            <element signature="e#1628#4490#0" />
+            <element signature="e#2608#4328#0" />
+            <element signature="e#3111#3222#1" />
+            <element signature="e#3282#3582#0" />
+            <element signature="e#3339#3457#0" />
+            <element signature="e#3374#3457#0" />
+            <element signature="e#4395#4490#0" />
+            <element signature="e#4574#8458#0" />
+            <element signature="e#4946#8390#0" />
+            <element signature="e#5750#5756#0" />
+            <element signature="e#6704#6776#0" />
+            <element signature="e#6961#7037#0" />
+            <element signature="e#7346#8390#0" />
+            <element signature="e#7510#7563#0" />
+            <element signature="e#7625#7676#0" />
+            <element signature="e#7892#8390#0" />
+            <element signature="e#8137#8362#0" />
+            <element signature="e#8230#8327#0" />
+            <element signature="e#8476#12761#0" />
+            <element signature="e#8553#8655#1" />
+            <element signature="e#8661#8735#0" />
+            <element signature="e#9428#12693#0" />
+            <element signature="e#10606#12550#0" />
+            <element signature="e#11350#11461#1" />
+            <element signature="e#11521#11821#0" />
+            <element signature="e#11578#11696#0" />
+            <element signature="e#11613#11696#0" />
+            <element signature="e#12598#12693#0" />
+            <element signature="e#12780#17530#0" />
+            <element signature="e#12889#17530#0" />
+            <element signature="e#12889#12979#1" />
+            <element signature="e#12989#13063#0" />
+            <element signature="e#13816#17454#0" />
+            <element signature="e#15086#17299#0" />
+            <element signature="e#15890#16005#1" />
+            <element signature="e#16073#16393#0" />
+            <element signature="e#16134#16260#0" />
+            <element signature="e#16173#16260#0" />
+            <element signature="e#17386#17485#0" />
+            <element signature="e#17579#17593#0" />
+            <element signature="e#17614#17641#0" />
+            <element signature="e#17666#17910#0" />
+            <element signature="e#17943#18498#0" />
+            <element signature="e#17943#18227#1" />
+            <element signature="e#18391#18498#0" />
+            <element signature="e#18527#18540#0" />
+            <element signature="e#18568#18955#0" />
+            <element signature="e#19004#19347#0" />
+            <element signature="e#19386#19498#0" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_mp.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
