@@ -119,7 +119,7 @@ def fs():
             # Update Status
             status.config(text="Finished...")
             status.update()
-
+            
         except KeyboardInterrupt:
             # Clear the '^C' from the display.
             print(CURSOR_BACK_2, ERASE_TO_END_OF_LINE, '\n')
