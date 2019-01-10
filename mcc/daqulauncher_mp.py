@@ -28,8 +28,7 @@ plt.rcParams["figure.figsize"] = (4.2,2.4)
 def launch_fs():
     p = Process(target=fs)
     p.start()
-    p.close()
-    p.join
+    p.join()
 
 def fs():
     # Update Status
