@@ -111,7 +111,10 @@ def fs():
 
             print(Force)
             print(Temp)
-            database_upload(now, ID, Force, Temp)
+
+            Cyc = None
+
+            database_upload(now, ID, Force, Temp, Cyc)
 
             Plot(force_data)
             ResultsWindow(Force, Temp)
@@ -323,7 +326,10 @@ def fswt():
 
             print(Force)
             print(Temp)
-            database_upload(now, ID, Force, Temp)
+
+            Cyc = None
+
+            database_upload(now, ID, Force, Temp, Cyc)
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
@@ -440,10 +446,14 @@ def fswtl():
 
                 print(Force)
                 print(Temp)
-                database_upload(now, ID, Force, Temp)
+
+                Cyc = int(counter.get())
+
+                database_upload(now, ID, Force, Temp, Cyc)
 
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
+
 
                 Plot(force_data)
                 ResultsWindow(Force, Temp)
@@ -516,13 +526,13 @@ def Plot(force_data):
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def database_upload(now, ID, Force, Temp):
+def database_upload(now, ID, Force, Temp, Cyc):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Data2 ([Date Time], ID, Force, Temperature) VALUES (?, ?, ?, ?)", now, ID, Force,
-                   Temp)
+    cursor.execute("INSERT INTO dbo.Data3 ([Date Time], ID, Force, Temperature, Cycle) VALUES (?, ?, ?, ?, ?)", now, ID, Force,
+                   Temp, Cyc)
     con.commit()
 
     con.close()
