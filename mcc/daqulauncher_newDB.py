@@ -454,6 +454,11 @@ def fswtl():
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
 
+                # Counter stepping
+                counter.set(counter.get() + 1)
+                f = open('count.txt', 'w')
+                f.write(str(counter.get()))
+                f.close()
 
                 Plot(force_data)
                 ResultsWindow(Force, Temp)
