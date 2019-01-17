@@ -479,16 +479,19 @@ def c_to_f(c):
 def temperature():
     # Raspberry Pi software SPI configuration.
     CLK = 25
-    CS = 24
     DO = 18
-    sensor = MAX31855.MAX31855(CLK, CS, DO)
-    temp = sensor.readTempC()
-    if np.isnan(temp) == True:
-        temp = None
-    else:
-        pass
+    #Comms pin for TCs
+    CS = 24, 23
+    lst = []
 
-    return temp
+    for i in CS:
+        sensor = MAX31855.MAX31855(CLK, i, DO)
+        temp = sensor.readTempC()
+        if np.isnan(temp) == True:
+            temp = None
+        lst.append(temp)
+
+    return lst
 
 def wait_for_trigger(hat):
     """
@@ -536,8 +539,8 @@ def database_upload(now, ID, Force, Temp, Cyc):
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Data3 ([Date Time], ID, Force, Temperature, Cycle) VALUES (?, ?, ?, ?, ?)", now, ID, Force,
-                   Temp, Cyc)
+    cursor.execute("INSERT INTO dbo.Data4 ([Date Time], ID, Force, Bearing Temp, Motor Temp, Cycle) VALUES (?, ?, ?, ?, ?, ?)", now, ID, Force,
+                   Temp[0, ], Temp[1, ], Cyc)
     con.commit()
 
     con.close()
