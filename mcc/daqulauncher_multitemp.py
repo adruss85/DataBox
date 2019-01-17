@@ -542,7 +542,7 @@ def database_upload(now, ID, Force, t, Cyc):
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Data4 ([Date Time], ID, Force, Bearing Temp, Motor Temp, Cycle) VALUES (?, ?, ?, ?, ?, ?)", now, ID, Force,
+    cursor.execute("INSERT INTO dbo.Data4 ([Date Time], ID, Force, [Bearing Temp], [Motor Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?)", now, ID, Force,
                    t[0], t[1], Cyc)
     con.commit()
 
