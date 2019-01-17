@@ -104,7 +104,8 @@ def fs():
             now = datetime.datetime.now()
             ID = int(idvar.get())
             Force = float("{0:.2f}".format(max(force_data)))
-            Temp = temperature()
+            t = temperature()
+            Temp = t[0]
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
@@ -114,7 +115,7 @@ def fs():
 
             Cyc = None
 
-            database_upload(now, ID, Force, Temp, Cyc)
+            database_upload(now, ID, Force, t, Cyc)
 
             Plot(force_data)
             ResultsWindow(Force, Temp)
@@ -322,14 +323,15 @@ def fswt():
             now = datetime.datetime.now()
             ID = int(idvar.get())
             Force = float("{0:.2f}".format(max(read_output.data) * 12))
-            Temp = temperature()
+            t = temperature()
+            Temp = t[0]
 
             print(Force)
             print(Temp)
 
             Cyc = None
 
-            database_upload(now, ID, Force, Temp, Cyc)
+            database_upload(now, ID, Force, t, Cyc)
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
@@ -442,14 +444,15 @@ def fswtl():
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
                 Force = float("{0:.2f}".format(max(read_output.data) * 12))
-                Temp = temperature()
+                t = temperature()
+                Temp = t[0]
 
                 print(Force)
                 print(Temp)
 
                 Cyc = int(counter.get())
 
-                database_upload(now, ID, Force, Temp, Cyc)
+                database_upload(now, ID, Force, t, Cyc)
 
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
@@ -534,13 +537,13 @@ def Plot(force_data):
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def database_upload(now, ID, Force, Temp, Cyc):
+def database_upload(now, ID, Force, t, Cyc):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
     cursor = con.cursor()
     print('Uploading...')
 
     cursor.execute("INSERT INTO dbo.Data4 ([Date Time], ID, Force, Bearing Temp, Motor Temp, Cycle) VALUES (?, ?, ?, ?, ?, ?)", now, ID, Force,
-                   Temp[0, ], Temp[1, ], Cyc)
+                   t[0], t[1], Cyc)
     con.commit()
 
     con.close()
