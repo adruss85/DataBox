@@ -99,7 +99,7 @@ def fs():
             print('Iterated through loop\n')
 
             chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-            np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+            #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
@@ -319,7 +319,7 @@ def fswt():
             print('Iterated through loop\n')
 
             chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-            np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+            #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
@@ -440,7 +440,7 @@ def fswtl():
                 print('Iterated through loop\n')
 
                 chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-                np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+                #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
 
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
