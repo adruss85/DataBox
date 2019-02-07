@@ -592,7 +592,7 @@ f2.grid(row=0, column=0, sticky=W+E+N+S)
 f2.grid_columnconfigure(0, weight=1)
 f2.grid_columnconfigure(3, weight=1)
 f2.grid_rowconfigure(0, weight=1)
-f2.grid_rowconfigure(8, weight=1)
+f2.grid_rowconfigure(10, weight=1)
 
 f3 = Frame(inout, relief=RAISED)
 f3.grid(row=0, column=1, sticky=W+E+N+S)
