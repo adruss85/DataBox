@@ -43,9 +43,13 @@ def c_to_f(c):
 
 # Raspberry Pi software SPI configuration.
 CLK = 25
-CS  = 24
-DO  = 18
-sensor = MAX31855.MAX31855(CLK, CS, DO)
+CS1 = 24
+CS2 = 23
+DO = 18
+
+sensor1 = MAX31855.MAX31855(CLK, CS1, DO)
+sensor2 = MAX31855.MAX31855(CLK, CS2, DO)
+
 
 # Raspberry Pi hardware SPI configuration.
 #SPI_PORT   = 0
@@ -66,12 +70,12 @@ sensor = MAX31855.MAX31855(CLK, CS, DO)
 # Loop printing measurements every second.
 print('Press Ctrl-C to quit.')
 while True:
-    temp = sensor.readTempC()
-    internal = sensor.readInternalC()
-    print('Thermocouple Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp)))
-    print('    Internal Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(internal, c_to_f(internal)))
+    temp1 = sensor1.readTempC()
+    temp2 = sensor2.readTempC()
+    print('Thermocouple 1 Temp: {0:0.3F}*C'.format(temp1))
+    print('Thermocouple 2 Temp: {0:0.3F}*C'.format(temp2))
     now = time.strftime('%d-%m-%Y %H:%M:%S')
-    f = open("data.txt", "a")
-    f.write(now + ',{0:0.3F}\n'.format(temp, c_to_f(temp)))
-    f.close
-    time.sleep(0.5)
+    #f = open("data.txt", "a")
+    #f.write(now + ',{0:0.3F}\n'.format(temp, c_to_f(temp)))
+    #f.close
+    time.sleep(1)

@@ -105,6 +105,7 @@ def fs():
             ID = int(idvar.get())
             Force = float("{0:.2f}".format(max(force_data)))
             t = temperature()
+            Temp = t[0]
 
 
             hat.a_in_scan_stop()
@@ -337,7 +338,7 @@ def fswt():
             hat.a_in_scan_cleanup()
 
             Plot(force_data)
-            ResultsWindow(Force, Temp)
+            ResultsWindow(Force, t)
 
             status.config(text="Finished...")
             status.update()
@@ -464,7 +465,7 @@ def fswtl():
                 f.close()
 
                 Plot(force_data)
-                ResultsWindow(Force, Temp)
+                ResultsWindow(Force, t)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
