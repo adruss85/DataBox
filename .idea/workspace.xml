@@ -11,25 +11,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_multitemp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="486" column="9" selection-start-line="486" selection-start-column="9" selection-end-line="486" selection-end-column="9" />
-              <folding>
-                <element signature="e#733#4606#0" />
-                <element signature="e#4622#8506#0" />
-                <element signature="e#8524#12857#0" />
-                <element signature="e#12876#17696#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_Alpha_proto.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="267">
-              <caret line="611" column="21" lean-forward="true" selection-start-line="611" selection-start-column="21" selection-end-line="611" selection-end-column="21" />
+              <caret line="612" column="21" lean-forward="true" selection-start-line="612" selection-start-column="21" selection-end-line="612" selection-end-column="21" />
               <folding>
                 <element signature="e#810#906#1" />
                 <element signature="e#912#986#0" />
@@ -37,50 +22,6 @@
                 <element signature="e#3289#3589#0" />
                 <element signature="e#3346#3464#0" />
                 <element signature="e#3381#3464#0" />
-                <element signature="e#4443#4538#0" />
-                <element signature="e#4622#8506#0" />
-                <element signature="e#4994#8438#0" />
-                <element signature="e#5798#5804#0" />
-                <element signature="e#6752#6824#0" />
-                <element signature="e#7009#7085#0" />
-                <element signature="e#7394#8438#0" />
-                <element signature="e#7558#7611#0" />
-                <element signature="e#7673#7724#0" />
-                <element signature="e#7940#8438#0" />
-                <element signature="e#8185#8410#0" />
-                <element signature="e#8278#8375#0" />
-                <element signature="e#8524#12857#0" />
-                <element signature="e#8601#8703#1" />
-                <element signature="e#8709#8783#0" />
-                <element signature="e#9476#12789#0" />
-                <element signature="e#10654#12646#0" />
-                <element signature="e#11398#11509#1" />
-                <element signature="e#11569#11869#0" />
-                <element signature="e#11626#11744#0" />
-                <element signature="e#11661#11744#0" />
-                <element signature="e#12694#12789#0" />
-                <element signature="e#12876#17696#0" />
-                <element signature="e#12985#17696#0" />
-                <element signature="e#12985#13075#1" />
-                <element signature="e#13085#13159#0" />
-                <element signature="e#13912#17620#0" />
-                <element signature="e#15182#17465#0" />
-                <element signature="e#15986#16101#1" />
-                <element signature="e#16169#16489#0" />
-                <element signature="e#16230#16356#0" />
-                <element signature="e#16269#16356#0" />
-                <element signature="e#17521#17620#0" />
-                <element signature="e#17714#17728#0" />
-                <element signature="e#17749#17776#0" />
-                <element signature="e#17801#18126#0" />
-                <element signature="e#17954#18110#0" />
-                <element signature="e#18159#18714#0" />
-                <element signature="e#18159#18443#1" />
-                <element signature="e#18607#18714#0" />
-                <element signature="e#18743#18756#0" />
-                <element signature="e#18784#19171#0" />
-                <element signature="e#19222#19652#0" />
-                <element signature="e#19674#19965#0" />
               </folding>
             </state>
           </provider>
@@ -89,10 +30,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/daqlauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="131" selection-start-line="131" selection-end-line="164" selection-end-column="33" />
+            <state relative-caret-position="153">
+              <caret line="150" column="32" lean-forward="true" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
               <folding>
                 <element signature="e#19#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_memoryleak_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="571">
+              <caret line="120" column="12" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+              <folding>
+                <element signature="e#4621#8505#0" />
+                <element signature="e#8523#12854#0" />
+                <element signature="e#12873#17691#0" />
+                <element signature="e#17796#18121#0" />
+                <element signature="e#18154#18709#0" />
+                <element signature="e#18779#19166#0" />
               </folding>
             </state>
           </provider>
@@ -133,6 +91,7 @@
         <option value="$PROJECT_DIR$/mcc/daqulauncher_multitemp.py" />
         <option value="$PROJECT_DIR$/daqlauncher.py" />
         <option value="$PROJECT_DIR$/mcc/daqulauncher_Alpha_proto.py" />
+        <option value="$PROJECT_DIR$/mcc/daqulauncher_memoryleak_test.py" />
       </list>
     </option>
   </component>
@@ -157,7 +116,7 @@
             <path>
               <item name="DataBox" type="b2602c69:ProjectViewProjectNode" />
               <item name="DataBox" type="462c0819:PsiDirectoryNode" />
-              <item name="thermo" type="462c0819:PsiDirectoryNode" />
+              <item name="mcc" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -324,7 +283,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49947312" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29035753" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27829698" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24918744" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -489,20 +448,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daqlauncher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="131" selection-start-line="131" selection-end-line="164" selection-end-column="33" />
-          <folding>
-            <element signature="e#19#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_Alpha_proto.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
-          <caret line="611" column="21" lean-forward="true" selection-start-line="611" selection-start-column="21" selection-end-line="611" selection-end-column="21" />
+          <caret line="612" column="21" lean-forward="true" selection-start-line="612" selection-start-column="21" selection-end-line="612" selection-end-column="21" />
           <folding>
             <element signature="e#810#906#1" />
             <element signature="e#912#986#0" />
@@ -510,50 +459,31 @@
             <element signature="e#3289#3589#0" />
             <element signature="e#3346#3464#0" />
             <element signature="e#3381#3464#0" />
-            <element signature="e#4443#4538#0" />
-            <element signature="e#4622#8506#0" />
-            <element signature="e#4994#8438#0" />
-            <element signature="e#5798#5804#0" />
-            <element signature="e#6752#6824#0" />
-            <element signature="e#7009#7085#0" />
-            <element signature="e#7394#8438#0" />
-            <element signature="e#7558#7611#0" />
-            <element signature="e#7673#7724#0" />
-            <element signature="e#7940#8438#0" />
-            <element signature="e#8185#8410#0" />
-            <element signature="e#8278#8375#0" />
-            <element signature="e#8524#12857#0" />
-            <element signature="e#8601#8703#1" />
-            <element signature="e#8709#8783#0" />
-            <element signature="e#9476#12789#0" />
-            <element signature="e#10654#12646#0" />
-            <element signature="e#11398#11509#1" />
-            <element signature="e#11569#11869#0" />
-            <element signature="e#11626#11744#0" />
-            <element signature="e#11661#11744#0" />
-            <element signature="e#12694#12789#0" />
-            <element signature="e#12876#17696#0" />
-            <element signature="e#12985#17696#0" />
-            <element signature="e#12985#13075#1" />
-            <element signature="e#13085#13159#0" />
-            <element signature="e#13912#17620#0" />
-            <element signature="e#15182#17465#0" />
-            <element signature="e#15986#16101#1" />
-            <element signature="e#16169#16489#0" />
-            <element signature="e#16230#16356#0" />
-            <element signature="e#16269#16356#0" />
-            <element signature="e#17521#17620#0" />
-            <element signature="e#17714#17728#0" />
-            <element signature="e#17749#17776#0" />
-            <element signature="e#17801#18126#0" />
-            <element signature="e#17954#18110#0" />
-            <element signature="e#18159#18714#0" />
-            <element signature="e#18159#18443#1" />
-            <element signature="e#18607#18714#0" />
-            <element signature="e#18743#18756#0" />
-            <element signature="e#18784#19171#0" />
-            <element signature="e#19222#19652#0" />
-            <element signature="e#19674#19965#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daqlauncher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="150" column="32" lean-forward="true" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
+          <folding>
+            <element signature="e#19#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_memoryleak_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="120" column="12" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+          <folding>
+            <element signature="e#4621#8505#0" />
+            <element signature="e#8523#12854#0" />
+            <element signature="e#12873#17691#0" />
+            <element signature="e#17796#18121#0" />
+            <element signature="e#18154#18709#0" />
+            <element signature="e#18779#19166#0" />
           </folding>
         </state>
       </provider>
