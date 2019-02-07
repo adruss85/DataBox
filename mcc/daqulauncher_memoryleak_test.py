@@ -118,7 +118,7 @@ def fs():
 
             database_upload(now, ID, Force, t, Cyc)
 
-            Plot(force_data)
+            #Plot(force_data)
             ResultsWindow(Force, t)
 
             # Update Status
