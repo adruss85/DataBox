@@ -105,7 +105,7 @@ def fs():
             ID = int(idvar.get())
             Force = float("{0:.2f}".format(max(force_data)))
             t = temperature()
-            Temp = t[0]
+
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
@@ -118,7 +118,7 @@ def fs():
             database_upload(now, ID, Force, t, Cyc)
 
             Plot(force_data)
-            ResultsWindow(Force, Temp)
+            ResultsWindow(Force, t)
 
             # Update Status
             status.config(text="Finished...")
@@ -549,12 +549,18 @@ def database_upload(now, ID, Force, t, Cyc):
     con.close()
     print('Data Upload Successful')
 
-def ResultsWindow(Force, Temp):
+def ResultsWindow(Force, t):
 
     ResultForce.config(text=Force)
     ResultForce.update()
-    ResultTemp.config(text=Temp)
-    ResultTemp.update()
+    ResultTemp1.config(text=t[0])
+    ResultTemp1.update()
+    ResultTemp2.config(text=t[1])
+    ResultTemp2.update()
+    ResultTemp3.config(text=t[2])
+    ResultTemp3.update()
+    ResultTemp4.config(text=t[3])
+    ResultTemp4.update()
 
 """"All code Running here"""
 """FRAMES"""
@@ -600,7 +606,7 @@ counter = IntVar()
 idvar.set(1)
 chanvar.set(1)
 ratevar.set(4000)
-totvar.set(1000)
+totvar.set(500)
 trigvar.set("TriggerModes.RISING_EDGE")
 f = open("count.txt", "r")
 counter.set(f.read())
@@ -612,7 +618,7 @@ chanin = OptionMenu(f2, chanvar, 1, 2, 3, 4, 5, 6, 7, 8)
 chanin.grid(row=2, column=2, padx=20, pady=10)
 ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
 ratein.grid(row=3, column=2, padx=20, pady=10)
-totin = OptionMenu(f2, totvar, 500, 1000, 2000, 5000, 10000)
+totin = OptionMenu(f2, totvar, 125, 250, 500, 1000, 2500)
 totin.grid(row=4, column=2, padx=20, pady=10)
 trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="TriggerModes.RISING_EDGE")
 trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
@@ -638,12 +644,24 @@ status = Label(f1, text="Ready...", fg='red', bg='white', relief=SUNKEN, width=1
 status.grid(row=2, column=0, columnspan=2)
 LabelForce = Label(f2, text="Force (kN)")
 LabelForce.grid(row=5, column=1)
-LabelTemp = Label(f2, text="Temp (C)")
-LabelTemp.grid(row=6, column=1)
+LabelTemp1 = Label(f2, text="Bearing Temp (C)")
+LabelTemp1.grid(row=6, column=1)
+LabelTemp2 = Label(f2, text="Motor Temp (C)")
+LabelTemp2.grid(row=7, column=1)
+LabelTemp3 = Label(f2, text="Ambient Temp (C)")
+LabelTemp3.grid(row=8, column=1)
+LabelTemp4 = Label(f2, text="Aux Temp (C)")
+LabelTemp4.grid(row=9, column=1)
 ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
 ResultForce.grid(row=5, column=2)
-ResultTemp = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
-ResultTemp.grid(row=6, column=2)
+ResultTemp1 = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp1.grid(row=6, column=2)
+ResultTemp2 = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp2.grid(row=7, column=2)
+ResultTemp3 = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp3.grid(row=8, column=2)
+ResultTemp4 = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultTemp4.grid(row=9, column=2)
 
 """LAUNCHER BUTTONS"""
 finitebutton = Button(f1, text="Finite Scan", command=fs)
