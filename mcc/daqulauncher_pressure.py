@@ -521,6 +521,7 @@ def wait_for_trigger(hat):
         is_triggered = status.triggered
 
 def conv(f):
+    f = (f-3)*50
     return f
 
 def Plot(pressure_data):
