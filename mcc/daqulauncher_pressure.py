@@ -304,7 +304,7 @@ def fswt():
             chan_data = np.zeros([samples_per_channel, num_channels])
             """create title array"""
             chan_title = []
-                       pressure_data = conv(read_output.data)
+            pressure_data = conv(read_output.data)
             """iterate through the array per channel to split out every other
             sample into the correct column"""
 
@@ -466,7 +466,7 @@ def fswtl():
                 f.write(str(counter.get()))
                 f.close()
 
-                Plot(pressure_data)
+                #Plot(pressure_data)
                 ResultsWindow(Pressure, t)
 
             except KeyboardInterrupt:
