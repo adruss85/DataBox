@@ -304,7 +304,7 @@ def fswt():
             chan_data = np.zeros([samples_per_channel, num_channels])
             """create title array"""
             chan_title = []
-            force_data = read_output.data * 12
+                       pressure_data = conv(read_output.data)
             """iterate through the array per channel to split out every other
             sample into the correct column"""
 
@@ -314,7 +314,7 @@ def fswt():
                         y = str('Channel') + ' ' + str(i)
                         chan_title.append(str(y))
                 if i < samples_per_channel - num_channels:
-                    chan_data[:, i] = force_data[i::num_channels]
+                    chan_data[:, i] = pressure_data[i::num_channels]
 
             print('Iterated through loop\n')
 
@@ -323,23 +323,25 @@ def fswt():
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(read_output.data)))
+            Pressure = float("{0:.2f}".format(max(pressure_data)))
             t = temperature()
             Temp = t[0]
 
-            print(Force)
-            print(Temp)
-
-            Cyc = None
-
-            database_upload(now, ID, Force, t, Cyc)
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            Plot(force_data)
-            ResultsWindow(Force, t)
+            print(Pressure)
+            print(Temp)
 
+            Cyc = None
+
+           # database_upload(now, ID, Force, t, Cyc)
+
+            Plot(pressure_data)
+            ResultsWindow(Pressure, t)
+
+            # Update Status
             status.config(text="Finished...")
             status.update()
 
@@ -425,7 +427,7 @@ def fswtl():
                 chan_data = np.zeros([samples_per_channel, num_channels])
                 """create title array"""
                 chan_title = []
-                force_data = read_output.data * 12
+                pressure_data = conv(read_output.data)
                 """iterate through the array per channel to split out every other
                 sample into the correct column"""
 
@@ -435,7 +437,7 @@ def fswtl():
                             y = str('Channel') + ' ' + str(i)
                             chan_title.append(str(y))
                     if i < samples_per_channel - num_channels:
-                        chan_data[:, i] = force_data[i::num_channels]
+                        chan_data[:, i] = pressure_data[i::num_channels]
 
                 print('Iterated through loop\n')
 
@@ -444,16 +446,16 @@ def fswtl():
 
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
-                Force = float("{0:.2f}".format(max(read_output.data) * 12))
+                Pressure = float("{0:.2f}".format(max(pressure_data)))
                 t = temperature()
                 Temp = t[0]
 
-                print(Force)
+                print(Pressure)
                 print(Temp)
 
                 Cyc = int(counter.get())
 
-                database_upload(now, ID, Force, t, Cyc)
+                database_upload(now, ID, Pressure, t, Cyc)
 
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
@@ -464,8 +466,8 @@ def fswtl():
                 f.write(str(counter.get()))
                 f.close()
 
-                Plot(force_data)
-                ResultsWindow(Force, t)
+                Plot(pressure_data)
+                ResultsWindow(Pressure, t)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
@@ -521,7 +523,7 @@ def wait_for_trigger(hat):
 def conv(f):
     return f
 
-def Plot(force_data):
+def Plot(pressure_data):
     #Clear all widgets from f3
     for widget in f3.winfo_children():
         widget.destroy()
@@ -532,27 +534,27 @@ def Plot(force_data):
     #draw plot
     fig = plt.figure(1, figsize=[3.2,2.4])
     plt.ion()
-    plt.plot(force_data)
+    plt.plot(pressure_data)
 
     canvas = FigureCanvasTkAgg(fig, master=f3)
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def database_upload(now, ID, Force, t, Cyc):
+def database_upload(now, ID, Pressure, t, Cyc):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Alpha ([Date Time], ID, Force, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", now, ID, Force,
+    cursor.execute("INSERT INTO dbo.Pressure ([Date Time], ID, Pressure, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", now, ID, Pressure,
                    t[0], t[1], t[2], t[3], Cyc)
     con.commit()
 
     con.close()
     print('Data Upload Successful')
 
-def ResultsWindow(Force, t):
+def ResultsWindow(Pressure, t):
 
-    ResultForce.config(text=Force)
+    ResultForce.config(text=Pressure)
     ResultForce.update()
     ResultTemp1.config(text=t[0])
     ResultTemp1.update()
@@ -643,7 +645,7 @@ statuslab = Label(f1, text="Scanner Status:")
 statuslab.grid(row=1, column=0, columnspan=2)
 status = Label(f1, text="Ready...", fg='red', bg='white', relief=SUNKEN, width=10)
 status.grid(row=2, column=0, columnspan=2)
-LabelForce = Label(f2, text="Force (kN)")
+LabelForce = Label(f2, text="Pressure (kPa)")
 LabelForce.grid(row=5, column=1)
 LabelTemp1 = Label(f2, text="Bearing Temp (C)")
 LabelTemp1.grid(row=6, column=1)
@@ -653,7 +655,7 @@ LabelTemp3 = Label(f2, text="Ambient Temp (C)")
 LabelTemp3.grid(row=8, column=1)
 LabelTemp4 = Label(f2, text="Aux Temp (C)")
 LabelTemp4.grid(row=9, column=1)
-ResultForce = Label(f2, text="Force", fg='red', bg='white', relief=SUNKEN, width=10)
+ResultForce = Label(f2, text="Pressure", fg='red', bg='white', relief=SUNKEN, width=10)
 ResultForce.grid(row=5, column=2)
 ResultTemp1 = Label(f2, text="Temp", fg='red', bg='white', relief=SUNKEN, width=10)
 ResultTemp1.grid(row=6, column=2)
