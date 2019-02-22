@@ -84,7 +84,7 @@ def fs():
             chan_data = np.zeros([samples_per_channel, num_channels])
             """create title array"""
             chan_title = []
-            force_data = read_output.data * 12
+            force_data = read_output.data
             """iterate through the array per channel to split out every other
             sample into the correct column"""
 
@@ -116,9 +116,9 @@ def fs():
 
             Cyc = None
 
-            database_upload(now, ID, Force, t, Cyc)
+           # database_upload(now, ID, Force, t, Cyc)
 
-            #Plot(force_data)
+            Plot(force_data)
             ResultsWindow(Force, t)
 
             # Update Status
@@ -323,7 +323,7 @@ def fswt():
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(read_output.data) * 12))
+            Force = float("{0:.2f}".format(max(read_output.data)))
             t = temperature()
             Temp = t[0]
 
@@ -464,7 +464,7 @@ def fswtl():
                 f.write(str(counter.get()))
                 f.close()
 
-                #Plot(force_data)
+                Plot(force_data)
                 ResultsWindow(Force, t)
 
             except KeyboardInterrupt:
@@ -519,7 +519,7 @@ def wait_for_trigger(hat):
         is_triggered = status.triggered
 
 def load_cell_conv(f):
-    return f * 12
+    return f - 1
 
 def Plot(force_data):
     #Clear all widgets from f3
