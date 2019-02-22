@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_Alpha_proto.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="612" column="21" lean-forward="true" selection-start-line="612" selection-start-column="21" selection-end-line="612" selection-end-column="21" />
+            <state relative-caret-position="9979">
+              <caret line="612" column="21" selection-start-line="612" selection-start-column="21" selection-end-line="612" selection-end-column="21" />
               <folding>
                 <element signature="e#810#906#1" />
                 <element signature="e#912#986#0" />
@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/daqlauncher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="150" column="32" lean-forward="true" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
+            <state relative-caret-position="2465">
+              <caret line="150" column="32" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
               <folding>
                 <element signature="e#19#39#0" expanded="true" />
               </folding>
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_memoryleak_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="120" column="12" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+            <state relative-caret-position="841">
+              <caret line="350" column="24" selection-start-line="350" selection-start-column="24" selection-end-line="350" selection-end-column="24" />
               <folding>
                 <element signature="e#4621#8505#0" />
                 <element signature="e#8523#12854#0" />
@@ -54,6 +54,36 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simplified/simplelauncher.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1419">
+              <caret line="488" lean-forward="true" selection-start-line="488" selection-end-line="488" />
+              <folding>
+                <element signature="e#19#56#0" expanded="true" />
+                <element signature="e#4621#8505#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/simplified/simplelauncherdev.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="131" column="82" lean-forward="true" selection-start-line="131" selection-start-column="82" selection-end-line="131" selection-end-column="82" />
+              <folding>
+                <element signature="e#329#740#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simplified/count.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -92,10 +122,12 @@
         <option value="$PROJECT_DIR$/daqlauncher.py" />
         <option value="$PROJECT_DIR$/mcc/daqulauncher_Alpha_proto.py" />
         <option value="$PROJECT_DIR$/mcc/daqulauncher_memoryleak_test.py" />
+        <option value="$PROJECT_DIR$/simplified/simplelauncher.py" />
+        <option value="$PROJECT_DIR$/simplified/simplelauncherdev.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -106,6 +138,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,13 +149,12 @@
             <path>
               <item name="DataBox" type="b2602c69:ProjectViewProjectNode" />
               <item name="DataBox" type="462c0819:PsiDirectoryNode" />
-              <item name="mcc" type="462c0819:PsiDirectoryNode" />
+              <item name="simplified" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -130,6 +162,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gciaru\Documents\GitHub\DataBox\simplified" />
       <recent name="C:\Users\gciaru\Documents\GitHub\DataBox\mcc" />
       <recent name="C:\Users\gciaru\Documents\GitHub\DataBox" />
     </key>
@@ -146,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.daqlauncher">
+  <component name="RunManager" selected="Python.simplelauncherdev">
     <configuration name="Plottest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DataBox" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -252,8 +285,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="simplelauncherdev" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DataBox" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/simplified" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/simplified/simplelauncherdev.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.simplelauncherdev" />
         <item itemvalue="Python.daqulauncher_full (1)" />
         <item itemvalue="Python.embed in tk triial" />
         <item itemvalue="Python.Plottest" />
@@ -275,15 +330,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13066386" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13066386" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49947312" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27829698" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27735645" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24918744" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -340,16 +394,7 @@
         <state relative-caret-position="-357" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/finite_scan_with_trigger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-206">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="e#673#710#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/finite_scan_with_trigger.py" />
     <entry file="file://C:/Python27/Lib/lib-tk/Tkinter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -400,16 +445,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="159" column="22" selection-start-line="115" selection-end-line="159" selection-end-column="22" />
-          <folding>
-            <element signature="e#48#489#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/continuous_scan_trigger test.py" />
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_mp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -417,41 +453,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_newDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="443" column="19" selection-start-line="443" selection-start-column="19" selection-end-line="443" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
-          <folding>
-            <element signature="e#810#906#1" />
-            <element signature="e#912#986#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_multitemp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="486" column="9" selection-start-line="486" selection-start-column="9" selection-end-line="486" selection-end-column="9" />
-          <folding>
-            <element signature="e#733#4606#0" />
-            <element signature="e#4622#8506#0" />
-            <element signature="e#8524#12857#0" />
-            <element signature="e#12876#17696#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_newDB.py" />
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_demo.py" />
+    <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_multitemp.py" />
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_Alpha_proto.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="612" column="21" lean-forward="true" selection-start-line="612" selection-start-column="21" selection-end-line="612" selection-end-column="21" />
+        <state relative-caret-position="9979">
+          <caret line="612" column="21" selection-start-line="612" selection-start-column="21" selection-end-line="612" selection-end-column="21" />
           <folding>
             <element signature="e#810#906#1" />
             <element signature="e#912#986#0" />
@@ -465,8 +473,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daqlauncher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="150" column="32" lean-forward="true" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
+        <state relative-caret-position="2465">
+          <caret line="150" column="32" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
           <folding>
             <element signature="e#19#39#0" expanded="true" />
           </folding>
@@ -475,8 +483,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mcc/daqulauncher_memoryleak_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="120" column="12" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+        <state relative-caret-position="841">
+          <caret line="350" column="24" selection-start-line="350" selection-start-column="24" selection-end-line="350" selection-end-column="24" />
           <folding>
             <element signature="e#4621#8505#0" />
             <element signature="e#8523#12854#0" />
@@ -484,6 +492,37 @@
             <element signature="e#17796#18121#0" />
             <element signature="e#18154#18709#0" />
             <element signature="e#18779#19166#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplified/daqulauncher_memoryleak_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplified/simplelauncher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1419">
+          <caret line="488" lean-forward="true" selection-start-line="488" selection-end-line="488" />
+          <folding>
+            <element signature="e#19#56#0" expanded="true" />
+            <element signature="e#4621#8505#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplified/count.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplified/simplelauncherdev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="131" column="82" lean-forward="true" selection-start-line="131" selection-start-column="82" selection-end-line="131" selection-end-column="82" />
+          <folding>
+            <element signature="e#329#740#0" />
           </folding>
         </state>
       </provider>

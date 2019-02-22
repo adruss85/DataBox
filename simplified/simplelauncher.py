@@ -15,13 +15,9 @@ from daqhats_utils import select_hat_device, enum_mask_to_string, \
 chan_list_to_mask
 import math as mt   # Added the math package
 import pyodbc
-import matplotlib
-matplotlib.use('TkAgg')
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import matplotlib.pyplot as plt
+
 import sys
-"""PLT FIGSIZE SETUP"""
-plt.rcParams["figure.figsize"] = (4.2,2.4)
+
 
 """ALL FUNCTIONS"""
 def fs():
@@ -54,21 +50,6 @@ def fs():
         address = select_hat_device(HatIDs.MCC_118)
         hat = mcc118(address)
 
-        print('\nSelected MCC 118 HAT device at address', address)
-
-        actual_scan_rate = hat.a_in_scan_actual_rate(num_channels, scan_rate)
-
-        print('\nMCC 118 continuous scan example')
-        print('    Functions demonstrated:')
-        print('         mcc118.a_in_scan_start')
-        print('         mcc118.a_in_scan_read')
-        print('    Channels: ', end='')
-        print(', '.join([str(chan) for chan in channels]))
-        print('    Requested scan rate: ', scan_rate)
-        print('    Actual scan rate: ', actual_scan_rate)
-        print('    Samples per channel', samples_per_channel)
-        print('    Options: ', enum_mask_to_string(OptionFlags, options))
-
         # Configure and start the scan.
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
                             options)
@@ -84,7 +65,7 @@ def fs():
             chan_data = np.zeros([samples_per_channel, num_channels])
             """create title array"""
             chan_title = []
-            pressure_data = conv(read_output.data)
+            force_data = read_output.data * 12
             """iterate through the array per channel to split out every other
             sample into the correct column"""
 
@@ -94,32 +75,22 @@ def fs():
                         y = str('Channel') + ' ' + str(i)
                         chan_title.append(str(y))
                 if i < samples_per_channel - num_channels:
-                    chan_data[:, i] = pressure_data[i::num_channels]
+                    chan_data[:, i] = force_data[i::num_channels]
 
             print('Iterated through loop\n')
 
-            chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-            #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
-
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Pressure = float("{0:.2f}".format(max(pressure_data)))
+            Force = float("{0:.2f}".format(max(force_data)))
             t = temperature()
-            Temp = t[0]
 
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            print(Pressure)
-            print(Temp)
-
             Cyc = None
 
-           # database_upload(now, ID, Force, t, Cyc)
-
-            Plot(pressure_data)
-            ResultsWindow(Pressure, t)
+            ResultsWindow(Force, t)
 
             # Update Status
             status.config(text="Finished...")
@@ -263,30 +234,11 @@ def fswt():
         address = select_hat_device(HatIDs.MCC_118)
         hat = mcc118(address)
 
-        print('\nSelected MCC 118 HAT device at address', address)
-
-        actual_scan_rate = hat.a_in_scan_actual_rate(num_channels, scan_rate)
-
-        print('\nMCC 118 continuous scan example')
-        print('    Functions demonstrated:')
-        print('         mcc118.trigger_mode')
-        print('         mcc118.a_in_scan_status')
-        print('         mcc118.a_in_scan_start')
-        print('         mcc118.a_in_scan_read')
-        print('    Channels: ', end='')
-        print(', '.join([str(chan) for chan in channels]))
-        print('    Requested scan rate: ', scan_rate)
-        print('    Actual scan rate: ', actual_scan_rate)
-        print('    Samples per channel', samples_per_channel)
-        print('    Options: ', enum_mask_to_string(OptionFlags, options))
-        print('    Trigger Mode: ', trigger_mode.name)
-
         hat.trigger_mode(trigger_mode)
 
         # Configure and start the scan.
         hat.a_in_scan_start(channel_mask, samples_per_channel, scan_rate,
                             options)
-
         try:
             # wait for the external trigger to occur
             print('\nWaiting for trigger ... hit Ctrl-C to cancel the trigger')
@@ -318,26 +270,16 @@ def fswt():
 
             print('Iterated through loop\n')
 
-            chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-            #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
-
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(read_output.data)))
+            Force = float("{0:.2f}".format(max(read_output.data) * 12))
             t = temperature()
-            Temp = t[0]
-
-            print(Force)
-            print(Temp)
 
             Cyc = None
-
-            database_upload(now, ID, Force, t, Cyc)
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            Plot(force_data)
             ResultsWindow(Force, t)
 
             status.config(text="Finished...")
@@ -384,24 +326,6 @@ def fswtl():
             address = select_hat_device(HatIDs.MCC_118)
             hat = mcc118(address)
 
-            print('\nSelected MCC 118 HAT device at address', address)
-
-            actual_scan_rate = hat.a_in_scan_actual_rate(num_channels, scan_rate)
-
-            print('\nMCC 118 continuous scan example')
-            print('    Functions demonstrated:')
-            print('         mcc118.trigger_mode')
-            print('         mcc118.a_in_scan_status')
-            print('         mcc118.a_in_scan_start')
-            print('         mcc118.a_in_scan_read')
-            print('    Channels: ', end='')
-            print(', '.join([str(chan) for chan in channels]))
-            print('    Requested scan rate: ', scan_rate)
-            print('    Actual scan rate: ', actual_scan_rate)
-            print('    Samples per channel', samples_per_channel)
-            print('    Options: ', enum_mask_to_string(OptionFlags, options))
-            print('    Trigger Mode: ', trigger_mode.name)
-
             hat.trigger_mode(trigger_mode)
 
             # Configure and start the scan.
@@ -439,17 +363,12 @@ def fswtl():
 
                 print('Iterated through loop\n')
 
-                chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-                #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+
 
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
                 Force = float("{0:.2f}".format(max(read_output.data) * 12))
                 t = temperature()
-                Temp = t[0]
-
-                print(Force)
-                print(Temp)
 
                 Cyc = int(counter.get())
 
@@ -464,7 +383,6 @@ def fswtl():
                 f.write(str(counter.get()))
                 f.close()
 
-                Plot(force_data)
                 ResultsWindow(Force, t)
 
             except KeyboardInterrupt:
@@ -518,37 +436,9 @@ def wait_for_trigger(hat):
         is_running = status.running
         is_triggered = status.triggered
 
-def conv(f):
-    return f
+def load_cell_conv(f):
+    return f * 12
 
-def Plot(force_data):
-    #Clear all widgets from f3
-    for widget in f3.winfo_children():
-        widget.destroy()
-
-    #clear plot
-    plt.clf()
-
-    #draw plot
-    fig = plt.figure(1, figsize=[3.2,2.4])
-    plt.ion()
-    plt.plot(force_data)
-
-    canvas = FigureCanvasTkAgg(fig, master=f3)
-    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-    canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
-
-def database_upload(now, ID, Force, t, Cyc):
-    con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
-    cursor = con.cursor()
-    print('Uploading...')
-
-    cursor.execute("INSERT INTO dbo.Alpha ([Date Time], ID, Force, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", now, ID, Force,
-                   t[0], t[1], t[2], t[3], Cyc)
-    con.commit()
-
-    con.close()
-    print('Data Upload Successful')
 
 def ResultsWindow(Force, t):
 
