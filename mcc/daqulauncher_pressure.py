@@ -103,7 +103,8 @@ def fs():
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Pressure = float("{0:.2f}".format(max(pressure_data)))
+            PressureMax = float("{0:.2f}".format(max(pressure_data)))
+            PressureMin = float("{0:.2f}".format(min(pressure_data)))
             t = temperature()
             Temp = t[0]
 
@@ -111,7 +112,8 @@ def fs():
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            print(Pressure)
+            print(PressureMax)
+            print(PressureMin)
             print(Temp)
 
             Cyc = None
@@ -319,11 +321,12 @@ def fswt():
             print('Iterated through loop\n')
 
             chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-            #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+            np.savetxt('pressure.csv', chan_final, fmt='%5s', delimiter=',')
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Pressure = float("{0:.2f}".format(max(pressure_data)))
+            PressureMax = float("{0:.2f}".format(max(pressure_data)))
+            PressureMin = float("{0:.2f}".format(min(pressure_data)))
             t = temperature()
             Temp = t[0]
 
@@ -331,7 +334,8 @@ def fswt():
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            print(Pressure)
+            print(PressureMax)
+            print(PressureMin)
             print(Temp)
 
             Cyc = None
@@ -442,20 +446,22 @@ def fswtl():
                 print('Iterated through loop\n')
 
                 chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
-                #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
+                np.savetxt('pressure.csv', chan_final, fmt='%5s', delimiter=',')
 
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
-                Pressure = float("{0:.2f}".format(max(pressure_data)))
+                PressureMax = float("{0:.2f}".format(max(pressure_data)))
+                PressureMin = float("{0:.2f}".format(min(pressure_data)))
                 t = temperature()
                 Temp = t[0]
 
-                print(Pressure)
+                print(PressureMax)
+                print(PressureMin)
                 print(Temp)
 
                 Cyc = int(counter.get())
 
-                database_upload(now, ID, Pressure, t, Cyc)
+                database_upload(now, ID, PressureMax, PressureMin, t, Cyc)
 
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
@@ -541,12 +547,12 @@ def Plot(pressure_data):
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def database_upload(now, ID, Pressure, t, Cyc):
+def database_upload(now, ID, PressureMax, PressureMin, t, Cyc):
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Pressure ([Date Time], ID, Pressure, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", now, ID, Pressure,
+    cursor.execute("INSERT INTO dbo.Pressure ([Date Time], ID, Max Pressure, Min Pressure, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", now, ID, PressureMax, PressureMin,
                    t[0], t[1], t[2], t[3], Cyc)
     con.commit()
 
