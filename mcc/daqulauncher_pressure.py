@@ -118,10 +118,10 @@ def fs():
 
             Cyc = None
 
-           # database_upload(now, ID, Force, t, Cyc)
+            #database_upload(now, ID, PressureMax, PressureMin, t, Cyc)
 
             Plot(pressure_data)
-            ResultsWindow(Pressure, t)
+            ResultsWindow(PressureMax, t)
 
             # Update Status
             status.config(text="Finished...")
@@ -257,7 +257,7 @@ def fswt():
 
     scan_rate = int(ratevar.get())
     options = OptionFlags.EXTTRIGGER
-    trigger_mode = TriggerModes.ACTIVE_HIGH
+    trigger_mode = TriggerModes.ACTIVE_LOW
     timeout = 5.0
 
     try:
@@ -343,7 +343,7 @@ def fswt():
            # database_upload(now, ID, Force, t, Cyc)
 
             Plot(pressure_data)
-            ResultsWindow(Pressure, t)
+            ResultsWindow(PressureMax, t)
 
             # Update Status
             status.config(text="Finished...")
@@ -382,7 +382,7 @@ def fswtl():
 
         scan_rate = int(ratevar.get())
         options = OptionFlags.EXTTRIGGER
-        trigger_mode = TriggerModes.ACTIVE_HIGH
+        trigger_mode = TriggerModes.ACTIVE_LOW
         timeout = 5.0
 
         try:
@@ -473,7 +473,7 @@ def fswtl():
                 f.close()
 
                 #Plot(pressure_data)
-                ResultsWindow(Pressure, t)
+                ResultsWindow(PressureMax, t)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
@@ -552,16 +552,16 @@ def database_upload(now, ID, PressureMax, PressureMin, t, Cyc):
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Pressure ([Date Time], ID, Max Pressure, Min Pressure, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", now, ID, PressureMax, PressureMin,
+    cursor.execute("INSERT INTO dbo.Pressure ([Date Time], ID, [Max Pressure], [Min Pressure], [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", now, ID, PressureMax, PressureMin,
                    t[0], t[1], t[2], t[3], Cyc)
     con.commit()
 
     con.close()
     print('Data Upload Successful')
 
-def ResultsWindow(Pressure, t):
+def ResultsWindow(PressureMax, t):
 
-    ResultForce.config(text=Pressure)
+    ResultForce.config(text=PressureMax)
     ResultForce.update()
     ResultTemp1.config(text=t[0])
     ResultTemp1.update()
@@ -628,7 +628,7 @@ chanin = OptionMenu(f2, chanvar, 1, 2, 3, 4, 5, 6, 7, 8)
 chanin.grid(row=2, column=2, padx=20, pady=10)
 ratein = OptionMenu(f2, ratevar, 500, 1000, 2000, 4000, 8000)
 ratein.grid(row=3, column=2, padx=20, pady=10)
-totin = OptionMenu(f2, totvar, 125, 250, 500, 1000, 2500)
+totin = OptionMenu(f2, totvar, 125, 250, 500, 1000, 2000, 3000)
 totin.grid(row=4, column=2, padx=20, pady=10)
 trigin1 = Radiobutton(f1, text="Trigger Rising", variable=trigvar, value="TriggerModes.RISING_EDGE")
 trigin2 = Radiobutton(f1, text="Trigger Falling", variable=trigvar, value="TriggerModes.FALLING_EDGE")
