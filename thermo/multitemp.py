@@ -23,25 +23,24 @@ def temperature():
     return {'Bearing':temp1, 'Motor':temp2}
     
 def temperatureloop():
+# Raspberry Pi software SPI configuration.
     CLK = 25
     DO = 18
-    CS = 24, 23
+    #Comms pin for TCs
+    CS = 4, 17, 27, 22
     lst = []
-    
+
     for i in CS:
         sensor = MAX31855.MAX31855(CLK, i, DO)
         temp = sensor.readTempC()
-        if np.isnan(temp) ==True:
+        if np.isnan(temp) == True:
             temp = None
         lst.append(temp)
-        
+
     return lst
 
-t = temperatureloop()
-t2 = temperature()
-
-print t[1]
-print t2
+temperatureloop()
+print lst
  
 #temp = temperature()
 
