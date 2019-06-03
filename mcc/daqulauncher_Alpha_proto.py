@@ -25,30 +25,33 @@ plt.rcParams["figure.figsize"] = (4.2,2.4)
 
 """ALL FUNCTIONS"""
 def fs():
-    # Update Status
+    # Update Status message
     status.config(text="Running...")
     status.update()
-    """
-        This function is executed automatically when the module is run directly.
-        """
+
+    """"This function is executed automatically when the module is run directly."""
+
 
     # Store the channels in a list and convert the list to a channel mask that
     # can be passed as a parameter to the MCC 118 functions.
-    no_of_channels = int(chanvar.get())  # Creates the list of channels.
+    no_of_channels = int(chanvar.get())  # Creates the list of channels from chanvar variable.
     channels = np.ndarray.tolist(np.arange((no_of_channels), dtype=int))
     channel_mask = chan_list_to_mask(channels)
     num_channels = len(channels)
 
+    #calculate number of samples per channel to be recorded from sample duration and rate
     samples_per_channel = int(float(totvar.get()) / 1000 * int(ratevar.get()))
     if (num_channels % 2) == 0:
         samples = int(samples_per_channel * num_channels)
     else:
         samples = int(mt.ceil(samples_per_channel * num_channels))
 
+    #pass sample rate to MCC code, set everything in the scanner to default, and set a timeout
     scan_rate = int(ratevar.get())
     options = OptionFlags.DEFAULT
     timeout = 10.0
 
+    #MCC scanner code
     try:
         # Select an MCC 118 HAT device to use.
         address = select_hat_device(HatIDs.MCC_118)
@@ -75,19 +78,20 @@ def fs():
 
         try:
             print('Starting scan ... Press Ctrl-C to stop\n')
+            #update status
             status.config(text="Scanning...")
             status.update()
 
-            """read complete output data and place int array"""
+            """read complete output data and place in array"""
             read_output = hat.a_in_scan_read_numpy(samples_per_channel, timeout)
             """create a blank array"""
             chan_data = np.zeros([samples_per_channel, num_channels])
             """create title array"""
             chan_title = []
             force_data = read_output.data * 12
-            """iterate through the array per channel to split out every other
-            sample into the correct column"""
-
+            """the force_data array is just a list of numbers which is samples per channel*no channels long,
+            iterate through the force_data array per channel to split out each sample into the correct column
+            based on the number of channels sampled"""
             for i in range(num_channels):
                 for j in range(samples_per_channel):
                     if j == 0:
@@ -98,28 +102,35 @@ def fs():
 
             print('Iterated through loop\n')
 
+            #used to output a text file containing channel data during testing
             chan_final = np.concatenate((np.reshape(np.array(chan_title), (1, num_channels)), chan_data), axis=0)
             #np.savetxt('foo.csv', chan_final, fmt='%5s', delimiter=',')
 
+            """Create output variables used for database upload and IO window display"""
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(force_data)))
+            # find the max force
+            force = float("{0:.2f}".format(max(force_data)))
+            # create an array of temperature values
             t = temperature()
-            Temp = t[0]
+            # take the value from the first tc and call it Temp (used for testing)
+            temp = t[0]
 
-
+            #stop the scan and cleanup resources used by DAQHat
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            print(Force)
-            print(Temp)
+            # print results in terminal (used for bug fixing)
+            print(force)
+            print(temp)
 
-            Cyc = None
+            cyc = None
 
-           # database_upload(now, ID, Force, t, Cyc)
+            #database_upload(now, ID, force, t, cyc)
 
-            Plot(force_data)
-            ResultsWindow(Force, t)
+            # output results
+            plot(force_data)
+            resultswindow(force, t)
 
             # Update Status
             status.config(text="Finished...")
@@ -131,6 +142,7 @@ def fs():
 
     except (HatError, ValueError) as err:
         print('\n', err)
+
 
 def cs():
     READ_ALL_AVAILABLE = -1
@@ -231,6 +243,7 @@ def cs():
     except (HatError, ValueError) as err:
         print('\n', err)
 
+
 def fswt():
     # Update Status
     status.config(text="Running...")
@@ -323,22 +336,23 @@ def fswt():
 
             now = datetime.datetime.now()
             ID = int(idvar.get())
-            Force = float("{0:.2f}".format(max(read_output.data) * 12))
+            force = float("{0:.2f}".format(max(read_output.data) * 12))
             t = temperature()
-            Temp = t[0]
+            temp = t[0]
 
-            print(Force)
-            print(Temp)
+            print(force)
+            print(temp)
 
-            Cyc = None
+            # creates a null value for the cycle count
+            cyc = None
 
-            database_upload(now, ID, Force, t, Cyc)
+            database_upload(now, ID, force, t, cyc)
 
             hat.a_in_scan_stop()
             hat.a_in_scan_cleanup()
 
-            Plot(force_data)
-            ResultsWindow(Force, t)
+            plot(force_data)
+            resultswindow(force, t)
 
             status.config(text="Finished...")
             status.update()
@@ -350,11 +364,16 @@ def fswt():
     except (HatError, ValueError) as err:
         print('\n', err)
 
+
 def fswtl():
     # Update Status
     status.config(text="Running...")
     status.update()
 
+    """The following implementation of looping the triggered scan is not big, nor clever, but was the only
+    way I could find of making it work.  Set loop to run while i < 6 but never actually iterate i (i'm a bad person).
+    Because of this there's no clean way to exit the loop, as the UI window is frozen whenever any of this background
+    code is running"""
     i = 1
     while i < 6:
         """This function is executed automatically when the module is run directly.
@@ -444,28 +463,33 @@ def fswtl():
 
                 now = datetime.datetime.now()
                 ID = int(idvar.get())
-                Force = float("{0:.2f}".format(max(read_output.data) * 12))
+                force = float("{0:.2f}".format(max(read_output.data) * 12))
                 t = temperature()
-                Temp = t[0]
+                temp = t[0]
 
-                print(Force)
-                print(Temp)
+                print(force)
+                print(temp)
 
-                Cyc = int(counter.get())
+                # read the cycle count from the number set in the UI
+                cyc = int(counter.get())
 
-                database_upload(now, ID, Force, t, Cyc)
+                # upload stuff to database
+                database_upload(now, ID, force, t, cyc)
 
                 hat.a_in_scan_stop()
                 hat.a_in_scan_cleanup()
 
                 # Counter stepping
                 counter.set(counter.get() + 1)
+
+                # counter value is stored in a text file so can be edited offline
+                # open the text file and update the number for the next loop
                 f = open('count.txt', 'w')
                 f.write(str(counter.get()))
                 f.close()
 
-                Plot(force_data)
-                ResultsWindow(Force, t)
+                #plot(force_data)
+                resultswindow(force, t)
 
             except KeyboardInterrupt:
                 # Clear the '^C' from the display.
@@ -474,11 +498,14 @@ def fswtl():
         except (HatError, ValueError) as err:
             print('\n', err)
 
+
 def Quit():
     root.destroy()
 
+
 def c_to_f(c):
     return c * 9.0 / 5.0 + 32.0
+
 
 def temperature():
     # Raspberry Pi software SPI configuration.
@@ -496,6 +523,7 @@ def temperature():
         lst.append(temp)
 
     return lst
+
 
 def wait_for_trigger(hat):
     """
@@ -518,10 +546,12 @@ def wait_for_trigger(hat):
         is_running = status.running
         is_triggered = status.triggered
 
+
 def load_cell_conv(f):
     return f * 12
 
-def Plot(force_data):
+
+def plot(force_data):
     #Clear all widgets from f3
     for widget in f3.winfo_children():
         widget.destroy()
@@ -538,21 +568,26 @@ def Plot(force_data):
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
     canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def database_upload(now, ID, Force, t, Cyc):
+
+def database_upload(now, ID, force, t, cyc):
+    # open the database connection and create a cursor
     con = pyodbc.connect("DSN=RIVWARE;UID=dataguys;PWD=dataguys;TDS_Version=4.2")
     cursor = con.cursor()
     print('Uploading...')
 
-    cursor.execute("INSERT INTO dbo.Alpha ([Date Time], ID, Force, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", now, ID, Force,
-                   t[0], t[1], t[2], t[3], Cyc)
+    # write the data to the correct table (dbo.Alpha in this case)
+    cursor.execute("INSERT INTO dbo.Alpha ([Date Time], ID, Force, [Bearing Temp], [Motor Temp], [Ambient Temp], [Aux Temp], Cycle) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", now, ID, force,
+                   t[0], t[1], t[2], t[3], cyc)
+    # commit changes
     con.commit()
-
+    # close connection
     con.close()
     print('Data Upload Successful')
 
-def ResultsWindow(Force, t):
 
-    ResultForce.config(text=Force)
+def resultswindow(force, t):
+
+    ResultForce.config(text=force)
     ResultForce.update()
     ResultTemp1.config(text=t[0])
     ResultTemp1.update()
@@ -563,7 +598,7 @@ def ResultsWindow(Force, t):
     ResultTemp4.config(text=t[3])
     ResultTemp4.update()
 
-""""All code Running here"""
+""""All code Running here.  TKinter/Variable Setup"""
 """FRAMES"""
 root = Tk()
 root.title("DAQ Launcher")
