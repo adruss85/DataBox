@@ -126,7 +126,7 @@ def fs():
 
             cyc = None
 
-            #database_upload(now, ID, force, t, cyc)
+            database_upload(now, ID, force, t, cyc)
 
             # output results
             plot(force_data)
